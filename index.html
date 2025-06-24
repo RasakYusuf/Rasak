@@ -48,6 +48,9 @@
     <!-- Google Fonts for Inter and Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        html {
+            height: 100%; /* Ensure html takes full height for body gradient to cover */
+        }
         /* Apply custom font and background color */
         body {
             font-family: 'Inter', sans-serif; /* Default body font */
@@ -59,11 +62,11 @@
         /* Headings use Montserrat font and are light for contrast on dark backgrounds */
         h1, h2, h3 {
             font-family: 'Montserrat', sans-serif;
-            color: theme('colors.text-light');
+            color: theme('colors.text-light'); /* All headings are light */
         }
         /* All general text within sections (which are also dark backgrounds) should be light */
         section p, section span, section label {
-            color: theme('colors.text-light');
+            color: theme('colors.text-light'); /* All general text is light */
         }
         /* Input and Textarea backgrounds and text colors */
         input, textarea {
@@ -104,6 +107,17 @@
         .contact-section form {
             background-color: theme('colors.bg-nested-card');
         }
+
+        /* Adjustments for specific elements to match the new text color strategy */
+        /* These specifically target the paragraph text that previously had text-gray-400 */
+        .skills-section p.text-lg,
+        .certifications-section p.text-lg,
+        .portfolio-section p.text-lg,
+        .certifications-section p.text-sm,
+        .portfolio-section p.text-base {
+            color: theme('colors.neutral-light-gray'); /* Use a specific light grey for these subtle texts */
+        }
+
 
         /* Custom scrollbar for a polished look */
         ::-webkit-scrollbar {
