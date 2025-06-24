@@ -20,26 +20,13 @@
                         montserrat: ['Montserrat', 'sans-serif'], /* New font for headings */
                     },
                     colors: {
-                        'page-bg-start': '#1D2A3B', /* Dark muted indigo for main page background gradient start */
-                        'page-bg-end': '#111A24', /* Even darker rich blue for main page background gradient end */
-                        'bg-section-card': '#2E3C4F', /* Desaturated dark blue for main sections/cards (About, Skills, Contact) */
-                        'bg-nested-card': '#222F3E', /* Deep charcoal blue for cards inside sections (project tiles, forms, certification blocks) */
-                        'text-light': '#EBF4F5', /* Soft light cream/off-white for most text on dark backgrounds */
+                        'page-bg-start': '#1D2A3B', /* NEW: Deep muted indigo for main page background gradient start */
+                        'page-bg-end': '#111A24', /* NEW: Even darker rich blue for main page background gradient end */
+                        'bg-section-card': '#2E3C4F', /* NEW: Desaturated dark blue for main sections/cards (About, Skills, etc.) */
+                        'bg-nested-card': '#222F3E', /* NEW: Deep charcoal blue for nested cards/form */
+                        'text-light': '#EBF4F5', /* NEW: Soft light cream/off-white for all text on dark backgrounds */
                         'accent-vibrant-blue': '#4299e1', /* Vibrant blue for primary actions/icons */
                         'accent-rich-gold': '#FFD700', /* Rich Gold for secondary highlights */
-                        
-                        /* Additional Themed Accent Colors for Skill Tags/Badges */
-                        'powerbi-tag': '#0078D4',
-                        'data-management-tag': '#28A745',
-                        'visualization-tag': '#FFC107',
-                        'tsql-tag': '#DC3545',
-                        'report-tag': '#6F42C1',
-                        'etl-tag': '#FD7E14',
-
-                        /* Scrollbar / Placeholder color */
-                        'neutral-light-gray': '#A0AEC0',
-                        'neutral-medium-gray': '#718096', /* For darker placeholder/border */
-                        'neutral-dark-gray': '#4A5568', /* For scrollbar track */
                     }
                 }
             }
@@ -48,9 +35,6 @@
     <!-- Google Fonts for Inter and Montserrat -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        html {
-            height: 100%; /* Ensure html takes full height for body gradient to cover */
-        }
         /* Apply custom font and background color */
         body {
             font-family: 'Inter', sans-serif; /* Default body font */
@@ -62,21 +46,21 @@
         /* Headings use Montserrat font and are light for contrast on dark backgrounds */
         h1, h2, h3 {
             font-family: 'Montserrat', sans-serif;
-            color: theme('colors.text-light'); /* All headings are light */
+            color: theme('colors.text-light');
         }
-        /* All general text within sections (which are also dark backgrounds) should be light */
+        /* All general text within sections (which are now dark backgrounds) should also be light */
         section p, section span, section label {
-            color: theme('colors.text-light'); /* All general text is light */
+            color: theme('colors.text-light');
         }
         /* Input and Textarea backgrounds and text colors */
         input, textarea {
             background-color: theme('colors.bg-nested-card'); /* Dark background for inputs */
             color: theme('colors.text-light'); /* Light text inside inputs */
-            border-color: theme('colors.neutral-medium-gray'); /* A darker border for inputs */
+            border-color: #4A5568; /* A darker, non-white border for inputs */
         }
         /* Adjust placeholder color for inputs */
         input::placeholder, textarea::placeholder {
-            color: theme('colors.neutral-light-gray'); /* Lighter placeholder text */
+            color: #A0AEC0; /* Lighter placeholder text */
         }
         /* Navbar links color */
         nav a {
@@ -108,15 +92,8 @@
             background-color: theme('colors.bg-nested-card');
         }
 
-        /* Adjustments for specific elements to match the new text color strategy */
-        /* These specifically target the paragraph text that previously had text-gray-400 */
-        .skills-section p.text-lg,
-        .certifications-section p.text-lg,
-        .portfolio-section p.text-lg,
-        .certifications-section p.text-sm,
-        .portfolio-section p.text-base {
-            color: theme('colors.neutral-light-gray'); /* Use a specific light grey for these subtle texts */
-        }
+        /* Adjust placeholder image text color if they are on dark backgrounds */
+        img[alt*="PowerBI"] { filter: brightness(1.2); } /* Example: slightly brighten skill icons if needed */
 
 
         /* Custom scrollbar for a polished look */
@@ -124,15 +101,15 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: theme('colors.neutral-dark-gray'); /* dark slate */
+            background: #4A5568; /* Darker slate */
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb {
-            background: theme('colors.neutral-medium-gray'); /* medium slate */
+            background: #718096; /* Medium slate */
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: theme('colors.neutral-light-gray'); /* Lighter slate on hover */
+            background: #A0AEC0; /* Lighter slate on hover */
         }
         /* Fade-in animation for sections */
         .animate-fade-in {
@@ -161,7 +138,7 @@
         }
     </style>
 </head>
-<body>
+<body class="text-gray-800">
     <!-- Navigation Bar -->
     <nav class="fixed top-0 left-0 right-0 shadow-lg z-50 p-4 transition-all duration-300">
         <div class="container mx-auto flex justify-between items-center max-w-5xl px-4">
@@ -205,7 +182,7 @@
         <!-- Skills Section (id="skills" for navigation) -->
         <section id="skills" class="w-full max-w-5xl bg-bg-section-card p-10 rounded-3xl shadow-xl mb-12 skills-section animate-fade-in">
             <h2 class="text-4xl font-extrabold font-montserrat mb-3 text-center">Core Competencies</h2>
-            <p class="text-lg text-neutral-light-gray mb-8 text-center">Key areas of my expertise and technical proficiency</p>
+            <p class="text-lg text-gray-400 mb-8 text-center">Key areas of my expertise and technical proficiency</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Skill Card: Power BI -->
                 <div class="flex flex-col items-center bg-bg-nested-card p-6 rounded-xl shadow-md transform hover:scale-105 transition duration-300 group">
@@ -243,21 +220,21 @@
         <!-- Certifications Section (id="certifications" for navigation) -->
         <section id="certifications" class="w-full max-w-5xl bg-bg-section-card p-10 rounded-3xl shadow-xl mb-12 certifications-section animate-fade-in">
             <h2 class="text-4xl font-extrabold font-montserrat mb-3 text-center">My Certifications</h2>
-            <p class="text-lg text-neutral-light-gray mb-8 text-center">My Professional Accreditations</p>
+            <p class="text-lg text-gray-400 mb-8 text-center">My Professional Accreditations</p>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Certification Card: Microsoft Power BI Data Analyst -->
                 <div class="bg-bg-nested-card rounded-xl shadow-md overflow-hidden flex flex-col items-center p-6 transform hover:scale-105 transition duration-300">
                     <img src="https://placehold.co/120x120/40C0F0/ffffff?text=Power+BI+DA" alt="Microsoft Power BI Data Analyst Certification" class="w-28 h-28 object-contain mb-4 rounded-lg">
-                    <h3 class="text-lg font-semibold text-text-light text-center mb-1">Microsoft Certified: Power BI Data Analyst Associate</h3>
-                    <p class="text-sm text-neutral-light-gray text-center">Issued by Microsoft</p>
+                    <h3 class="text-lg font-semibold text-center mb-1">Microsoft Certified: Power BI Data Analyst Associate</h3>
+                    <p class="text-sm text-gray-400 text-center">Issued by Microsoft</p>
                 </div>
 
                 <!-- Certification Card: Microsoft Azure Data Fundamentals -->
                 <div class="bg-bg-nested-card rounded-xl shadow-md overflow-hidden flex flex-col items-center p-6 transform hover:scale-105 transition duration-300">
                     <img src="https://placehold.co/120x120/0078D4/ffffff?text=Azure+DF" alt="Microsoft Azure Data Fundamentals Certification" class="w-28 h-28 object-contain mb-4 rounded-lg">
                     <div>
-                        <h3 class="text-lg font-semibold text-text-light text-center mb-1">Microsoft Certified: Azure Data Fundamentals (DP-900)</h3>
-                        <p class="text-sm text-neutral-light-gray text-center">Issued by Microsoft</p>
+                        <h3 class="text-lg font-semibold text-center mb-1">Microsoft Certified: Azure Data Fundamentals (DP-900)</h3>
+                        <p class="text-sm text-gray-400 text-center">Issued by Microsoft</p>
                     </div>
                 </div>
 
@@ -265,8 +242,8 @@
                 <div class="bg-bg-nested-card rounded-xl shadow-md overflow-hidden flex flex-col items-center p-6 transform hover:scale-105 transition duration-300">
                     <img src="https://placehold.co/120x120/800080/ffffff?text=PMP" alt="Project Management Professional (PMP) Certification" class="w-28 h-28 object-contain mb-4 rounded-lg">
                     <div>
-                        <h3 class="text-lg font-semibold text-text-light text-center mb-1">Project Management Professional (PMP)</h3>
-                        <p class="text-sm text-neutral-light-gray text-center">Issued by Project Management Institute (PMI)</p>
+                        <h3 class="text-lg font-semibold text-center mb-1">Project Management Professional (PMP)</h3>
+                        <p class="text-sm text-gray-400 text-center">Issued by Project Management Institute (PMI)</p>
                     </div>
                 </div>
             </div>
@@ -275,21 +252,21 @@
         <!-- Portfolio Projects Section (id="portfolio" for navigation) -->
         <section id="portfolio" class="w-full max-w-5xl bg-bg-section-card p-10 rounded-3xl shadow-xl mb-12 portfolio-section animate-fade-in">
             <h2 class="text-4xl font-extrabold font-montserrat mb-3 text-center">My Portfolio</h2>
-            <p class="text-lg text-neutral-light-gray mb-8 text-center">A selection of projects that showcase my skills and expertise</p>
+            <p class="text-lg text-gray-400 mb-8 text-center">A selection of projects that showcase my skills and expertise</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Project Card 1 -->
                 <div class="bg-bg-nested-card rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
                     <img src="https://placehold.co/600x350/A0AEC0/2d3748?text=Sales+Dashboard+Project" alt="Sales Performance Dashboard Project Thumbnail" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-2xl font-semibold font-montserrat mb-2">Sales Performance Dashboard</h3>
-                        <p class="text-text-light text-base mb-4">
+                        <p class="text-base mb-4">
                             Developed an interactive Power BI dashboard to visualize sales trends, identify top-performing products,
                             and track regional sales efficiency. Utilized T-SQL for data extraction and transformation.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-powerbi-tag text-white text-sm font-medium px-3 py-1 rounded-full">Power BI</span>
-                            <span class="bg-tsql-tag text-white text-sm font-medium px-3 py-1 rounded-full">T-SQL</span>
-                            <span class="bg-visualization-tag text-white text-sm font-medium px-3 py-1 rounded-full">Data Visualization</span>
+                            <span class="bg-accent-vibrant-blue text-white text-sm font-medium px-3 py-1 rounded-full">Power BI</span>
+                            <span class="bg-accent-rich-gold text-white text-sm font-medium px-3 py-1 rounded-full">T-SQL</span>
+                            <span class="bg-gray-700 text-white text-sm font-medium px-3 py-1 rounded-full">Data Visualization</span>
                         </div>
                         <a href="#" class="inline-flex items-center px-5 py-2.5 bg-accent-vibrant-blue text-white font-semibold rounded-lg hover:bg-page-bg-end transition duration-300 transform hover:scale-105 shadow-lg">
                             View Project
@@ -303,14 +280,14 @@
                     <img src="https://placehold.co/600x350/B0BCC7/2d3748?text=Churn+Analysis+Project" alt="Customer Churn Analysis Project Thumbnail" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-2xl font-semibold font-montserrat mb-2">Customer Churn Analysis</h3>
-                        <p class="text-text-light text-base mb-4">
+                        <p class="text-base mb-4">
                             Developed an ETL pipeline to consolidate customer data from disparate sources, performed
                             in-depth analytics to identify churn predictors, and created a predictive model.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-etl-tag text-white text-sm font-medium px-3 py-1 rounded-full">ETL Development</span>
-                            <span class="bg-data-management-tag text-white text-sm font-medium px-3 py-1 rounded-full">Data Analytics</span>
-                            <span class="bg-report-tag text-white text-sm font-medium px-3 py-1 rounded-full">Predictive Modeling</span>
+                            <span class="bg-orange-500 text-white text-sm font-medium px-3 py-1 rounded-full">ETL Development</span>
+                            <span class="bg-green-600 text-white text-sm font-medium px-3 py-1 rounded-full">Data Analytics</span>
+                            <span class="bg-purple-600 text-white text-sm font-medium px-3 py-1 rounded-full">Predictive Modeling</span>
                         </div>
                         <a href="#" class="inline-flex items-center px-5 py-2.5 bg-accent-vibrant-blue text-white font-semibold rounded-lg hover:bg-page-bg-end transition duration-300 transform hover:scale-105 shadow-lg">
                             View Project
@@ -324,14 +301,14 @@
                     <img src="https://placehold.co/600x350/C0C9D4/2d3748?text=Future+Project" alt="Future Project Thumbnail" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-2xl font-semibold font-montserrat mb-2">Your Next Awesome Project Here</h3>
-                        <p class="text-text-light text-base mb-4">
+                        <p class="text-base mb-4">
                             A brief description of your future project, detailing the problem, your solution, and the technologies used.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-neutral-medium-gray text-white text-sm font-medium px-3 py-1 rounded-full">New Skill</span>
-                            <span class="bg-neutral-medium-gray text-white text-sm font-medium px-3 py-1 rounded-full">Innovation</span>
+                            <span class="bg-gray-500 text-white text-sm font-medium px-3 py-1 rounded-full">New Skill</span>
+                            <span class="bg-gray-500 text-white text-sm font-medium px-3 py-1 rounded-full">Innovation</span>
                         </div>
-                        <a href="#" class="inline-flex items-center px-5 py-2.5 bg-neutral-medium-gray text-white font-semibold rounded-lg cursor-not-allowed shadow-lg">
+                        <a href="#" class="inline-flex items-center px-5 py-2.5 bg-gray-400 text-white font-semibold rounded-lg cursor-not-allowed shadow-lg">
                             Coming Soon
                             <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </a>
@@ -355,20 +332,20 @@
                 <h3 class="text-2xl font-semibold font-montserrat mb-4 text-center">Send Me a Message</h3>
                 <form action="YOUR_FORMSPREE_URL_HERE" method="POST" class="bg-bg-nested-card p-8 rounded-xl shadow-lg">
                     <div class="mb-5">
-                        <label for="name" class="block text-text-light text-base font-bold mb-2">Name:</label>
-                        <input type="text" id="name" name="name" class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 text-text-light leading-tight focus:outline-none focus:ring-2 focus:ring-accent-vibrant-blue focus:border-transparent transition duration-200" placeholder="Your Full Name" required>
+                        <label for="name" class="block text-base font-bold mb-2">Name:</label>
+                        <input type="text" id="name" name="name" class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:ring-accent-vibrant-blue focus:border-transparent transition duration-200" placeholder="Your Full Name" required>
                     </div>
                     <div class="mb-5">
-                        <label for="email" class="block text-text-light text-base font-bold mb-2">Email:</label>
-                        <input type="email" id="email" name="_replyto" class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 text-text-light leading-tight focus:outline-none focus:ring-2 focus:ring-accent-vibrant-blue focus:border-transparent transition duration-200" placeholder="your.email@example.com" required>
+                        <label for="email" class="block text-base font-bold mb-2">Email:</label>
+                        <input type="email" id="email" name="_replyto" class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:ring-accent-vibrant-blue focus:border-transparent transition duration-200" placeholder="your.email@example.com" required>
                     </div>
                     <div class="mb-5">
-                        <label for="subject" class="block text-text-light text-base font-bold mb-2">Subject:</label>
-                        <input type="text" id="subject" name="_subject" class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 text-text-light leading-tight focus:outline-none focus:ring-2 focus:ring-accent-vibrant-blue focus:border-transparent transition duration-200" placeholder="Subject of your message" required>
+                        <label for="subject" class="block text-base font-bold mb-2">Subject:</label>
+                        <input type="text" id="subject" name="_subject" class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:ring-accent-vibrant-blue focus:border-transparent transition duration-200" placeholder="Subject of your message" required>
                     </div>
                     <div class="mb-6">
-                        <label for="message" class="block text-text-light text-base font-bold mb-2">Message:</label>
-                        <textarea id="message" name="message" rows="6" class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 text-text-light leading-tight focus:outline-none focus:ring-2 focus:ring-accent-vibrant-blue focus:border-transparent transition duration-200" placeholder="Your message here..." required></textarea>
+                        <label for="message" class="block text-base font-bold mb-2">Message:</label>
+                        <textarea id="message" name="message" rows="6" class="shadow-sm appearance-none border rounded-lg w-full py-3 px-4 leading-tight focus:outline-none focus:ring-2 focus:ring-accent-vibrant-blue focus:border-transparent transition duration-200" placeholder="Your message here..." required></textarea>
                     </div>
                     <div class="flex items-center justify-center">
                         <button type="submit" class="px-8 py-3 bg-accent-vibrant-blue text-white font-bold text-lg rounded-xl shadow-lg hover:bg-page-bg-end transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-vibrant-blue focus:ring-offset-2">
@@ -380,7 +357,7 @@
         </section>
 
         <!-- Footer -->
-        <footer class="w-full max-w-5xl text-center text-neutral-light-gray text-sm mt-12 py-6 border-t border-neutral-medium-gray">
+        <footer class="w-full max-w-5xl text-center text-gray-500 text-sm mt-12 py-6 border-t border-gray-300">
             &copy; 2025 Rasak Yusuf. All rights reserved.
         </footer>
     </div>
