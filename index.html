@@ -632,18 +632,18 @@ FROM
      INNER JOIN Equipment E ON T.EquipmentID = E.EquipmentID) D
 PIVOT
     (SUM(GrossAmount) FOR TransYear IN ([2015],[2016],[2017],[2018],[2019])) G;
-</code></pre>
+```</pre>
                         <!-- Optional: Add a download button for the SQL file -->
                         <a href="portfolio-assets/k2a-fleets.sql" download="k2a-fleets.sql" class="inline-flex items-center mt-2 sm:mt-4 px-5 py-2.5 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-300 transform hover:scale-105 shadow-lg">
                             Download SQL File
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
                         </a>
                     </div>
                 </div>
 
-                <!-- Project Card 3: Falanza Agro-Allied: Poultry Performance Analysis Dashboard (NOW LINKS TO PDF) -->
+                <!-- Project Card 3: Falanza Agro-Allied: Poultry Performance Analysis Report -->
                 <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
-                    <img src="https://placehold.co/600x350/B5EAD7/2d3748?text=Falanza+Dashboard" alt="Falanza Agro-Allied Dashboard Thumbnail" class="w-full h-48 object-cover">
+                    <img src="[https://placehold.co/600x350/B5EAD7/2d3748?text=Falanza+Dashboard](https://placehold.co/600x350/B5EAD7/2d3748?text=Falanza+Dashboard)" alt="Falanza Agro-Allied Dashboard Thumbnail" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <h3 class="text-2xl font-semibold font-montserrat text-primary-text-dark mb-2">Falanza Agro-Allied: Poultry Performance Analysis Report</h3>
                         <p class="text-primary-text-dark text-base mb-4">
@@ -660,29 +660,41 @@ PIVOT
                             <span class="bg-orange-500 text-white text-sm font-medium px-3 py-1 rounded-full">Forecasting</span>
                         </div>
                         <!-- IMPORTANT: This button now links to the PDF version of your report. -->
-                        <a href="portfolio-assets/falanza-report.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-2.5 bg-accent-vibrant-blue text-white font-semibold rounded-lg hover:bg-primary-text-dark transition duration-300 transform hover:scale-105 shadow-lg">
+                        <a href="portfolio-assets/falanza-report.pdf" download="falanza-report.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-2.5 bg-accent-vibrant-blue text-white font-semibold rounded-lg hover:bg-primary-text-dark transition duration-300 transform hover:scale-105 shadow-lg">
                             View Report (PDF)
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </a>
                     </div>
                 </div>
 
-                <!-- Project Card 4: Interactive Reporting System (Remains a placeholder for now) -->
+                <!-- Project Card 4: Tesca Grocery Chain: Comprehensive HR & Sales Analytics -->
                 <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
-                    <img src="https://placehold.co/600x350/C6E2E9/2d3748?text=Interactive+Reports" alt="Interactive Reports Thumbnail" class="w-full h-48 object-cover">
+                    <img src="[https://placehold.co/600x350/D3E0EA/2d3748?text=Teca+Analytics+Dashboard](https://placehold.co/600x350/D3E0EA/2d3748?text=Teca+Analytics+Dashboard)" alt="Teca Grocery Chain Analytics Dashboard Thumbnail" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="text-2xl font-semibold font-montserrat text-primary-text-dark mb-2">Interactive Reporting System</h3>
+                        <h3 class="text-2xl font-semibold font-montserrat text-primary-text-dark mb-2">Teca Grocery Chain: Comprehensive HR & Sales Analytics</h3>
                         <p class="text-primary-text-dark text-base mb-4">
-                            Designed and deployed an interactive reporting system for executive insights, enhancing decision-making through real-time data access and custom filters.
+                            Developed an Enterprise Data Warehouse and Data Mart Cubes (Multidimensional and Tabular Models) for Tesca Grocery Chain.
+                            This solution consolidates sales, purchase, employee overtime, absence, and misconduct data,
+                            providing actionable insights through Power BI visualizations. Key analyses include product movement,
+                            market basket mix, vendor efficiency, product rebranding impact, and HR trends in overtime, absence, and misconduct.
                         </p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-purple-500 text-white text-sm font-medium px-3 py-1 rounded-full">Tableau</span>
-                            <span class="bg-green-600 text-white text-sm font-medium px-3 py-1 rounded-full">Data Storytelling</span>
-                            <span class="bg-blue-600 text-white text-sm font-medium px-3 py-1 rounded-full">SQL</span>
+                            <span class="bg-blue-700 text-white text-sm font-medium px-3 py-1 rounded-full">Power BI</span>
+                            <span class="bg-green-700 text-white text-sm font-medium px-3 py-1 rounded-full">Data Warehousing</span>
+                            <span class="bg-red-700 text-white text-sm font-medium px-3 py-1 rounded-full">SSAS</span>
+                            <span class="bg-cyan-700 text-white text-sm font-medium px-3 py-1 rounded-full">SQL Server</span>
+                            <span class="bg-indigo-700 text-white text-sm font-medium px-3 py-1 rounded-full">HR Analytics</span>
+                            <span class="bg-yellow-700 text-white text-sm font-medium px-3 py-1 rounded-full">Sales Analytics</span>
                         </div>
-                        <a href="#" class="inline-flex items-center px-5 py-2.5 bg-accent-vibrant-blue text-white font-semibold rounded-lg hover:bg-primary-text-dark transition duration-300 transform hover:scale-105 shadow-lg">
-                            View Project
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        <!-- Link to the PDF containing the visualizations -->
+                        <a href="portfolio-assets/Tesca Power BI.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-2.5 bg-accent-vibrant-blue text-white font-semibold rounded-lg hover:bg-primary-text-dark transition duration-300 transform hover:scale-105 shadow-lg">
+                            View Visualizations (PDF)
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                        <!-- Link to the project case study PDF -->
+                        <a href="portfolio-assets/Tesca Grocery Analytics Project.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-2.5 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-300 transform hover:scale-105 shadow-lg mt-2 md:mt-0 ml-0 md:ml-4">
+                            View Case Study (PDF)
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
                         </a>
                     </div>
                 </div>
@@ -694,15 +706,15 @@ PIVOT
             <h2 class="text-4xl font-extrabold font-montserrat text-primary-text-dark mb-6 text-center">Get in Touch</h2>
             <div class="flex flex-col sm:flex-row justify-center items-center gap-6 mb-8">
                 <!-- LinkedIn Button -->
-                <a href="https://www.linkedin.com/in/rasak-yusuf/" target="_blank" rel="noopener noreferrer" class="flex items-center px-8 py-4 bg-accent-vibrant-blue text-white text-xl font-bold rounded-full shadow-lg hover:bg-primary-text-dark transition duration-300 transform hover:scale-105">
-                    <svg class="w-8 h-8 mr-4" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <a href="[https://www.linkedin.com/in/rasak-yusuf/](https://www.linkedin.com/in/rasak-yusuf/)" target="_blank" rel="noopener noreferrer" class="flex items-center px-8 py-4 bg-accent-vibrant-blue text-white text-xl font-bold rounded-full shadow-lg hover:bg-primary-text-dark transition duration-300 transform hover:scale-105">
+                    <svg class="w-8 h-8 mr-4" fill="currentColor" viewBox="0 0 24 24" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
                     Connect on LinkedIn
                 </a>
             </div>
             <!-- Contact Form -->
             <div class="w-full max-w-lg mx-auto">
                 <h3 class="text-2xl font-semibold font-montserrat text-primary-text-dark mb-4 text-center">Send Me a Message</h3>
-                <form id="contactForm" action="https://formspree.io/f/mzzgkkep" method="POST" class="bg-gray-50 p-8 rounded-xl shadow-lg">
+                <form id="contactForm" action="[https://formspree.io/f/mzzgkkep](https://formspree.io/f/mzzgkkep)" method="POST" class="bg-gray-50 p-8 rounded-xl shadow-lg">
                     <div class="mb-5">
                         <label for="name" class="block text-primary-text-dark text-base font-bold mb-2">Name:</label>
                         <input type="text" id="name" name="name" class="shadow-sm appearance-none border border-gray-300 rounded-lg w-full py-3 px-4 text-primary-text-dark leading-tight focus:outline-none focus:ring-2 focus:ring-accent-vibrant-blue focus:border-transparent transition duration-200" placeholder="Your Full Name" required>
