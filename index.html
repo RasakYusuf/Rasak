@@ -1,60 +1,741 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Professional Portfolio - Rasak Yusuf</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Portfolio - Rasak Yusuf</title>
+    <!-- Essential for preventing caching issues on GitHub Pages -->
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+    <!-- Load Tailwind CSS from CDN for comprehensive utility classes -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Configure Tailwind to use Inter font and custom colors -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                        montserrat: ['Montserrat', 'sans-serif'], /* New font for headings */
+                    },
+                    colors: {
+                        'page-bg-dark': '#1a202c', /* Very dark blue-grey for main page background (gradient start) */
+                        'page-bg-light': '#2c3e50', /* Slightly lighter blue-grey for main page background (gradient end) */
+                        'card-bg-light': '#e8eaef', /* Soft, professional light grey-blue for content sections */
+                        'primary-text-dark': '#2d3748', /* Dark text for content on light backgrounds */
+                        'secondary-text-light': '#b0b0b0', /* Updated: Darker grey for text on dark backgrounds (nav links) */
+                        'accent-vibrant-blue': '#4299e1', /* Vibrant blue for primary actions/icons */
+                        'accent-rich-gold': '#d69e2e', /* Rich gold for secondary highlights */
+                        'nav-ultra-dark': '#000000', /* Updated: Pure black for the navigation bar background (0% transparency) */
+                        'nav-border-light-blue': '#87CEEB', /* New: Light blue for navigation border */
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts for Inter and Montserrat -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Apply custom font and background color */
+        body {
+            font-family: 'Inter', sans-serif; /* Default body font */
+            color: theme('colors.secondary-text-light'); /* Default text color for page content */
+            /* Use a radial gradient for a sophisticated "wallpaper" effect */
+            background: radial-gradient(circle at 10% 20%, theme('colors.page-bg-light') 0%, theme('colors.page-bg-dark') 100%);
+            min-height: 100vh; /* Ensure the gradient covers the whole viewport */
+        }
+        /* Headings use Montserrat font */
+        h1, h2, h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: theme('colors.secondary-text-light'); /* Default heading color for dark backgrounds */
+        }
+        /* Override heading color for sections with light backgrounds (cards) */
+        section h2, section h3 {
+            color: theme('colors.primary-text-dark'); /* Dark text for headings within light sections */
+        }
+        /* Ensure specific text elements on light backgrounds remain dark */
+        section p, section span {
+            color: theme('colors.primary-text-dark');
+        }
+        /* Labels inside forms also need to be dark on light backgrounds */
+        section label {
+            color: theme('colors.primary-text-dark');
+        }
+        /* Input and Textarea default text color */
+        input, textarea {
+            color: theme('colors.primary-text-dark');
+        }
+        /* Placeholder text color for inputs and textareas */
+        input::placeholder, textarea::placeholder {
+            color: #718096; /* Lighter grey for placeholders */
+        }
+
+        /* Navigation bar background now uses a darker color to show visibility */
+        nav {
+            background-color: theme('colors.nav-ultra-dark'); /* Set to pure black */
+            border-bottom: 2px solid theme('colors.nav-border-light-blue'); /* Updated: Thicker, light blue border */
+        }
+        /* Nav links are now light on the dark nav background */
+        nav a {
+            color: theme('colors.secondary-text-light'); /* Uses the new darker grey */
+        }
+        nav a:hover {
+            color: theme('colors.accent-vibrant-blue');
+        }
+
+        /* Set background for main content sections */
+        #about, #skills, #certifications, #portfolio, #contact {
+            background-color: theme('colors.card-bg-light');
+        }
+
+        /* Set background for skill/certification/project cards and contact form using a very light grey for contrast */
+        .skills-section > div > div,
+        .certifications-section > div > div,
+        .portfolio-section > div > div {
+            background-color: #f8f9fa; /* Very light grey for nested cards/forms */
+        }
+        /* Input borders need to be visible */
+        input, textarea {
+            border-color: #cbd5e0; /* A light grey border */
+        }
+        /* Footer text color (on dark page background) */
+        footer {
+            color: theme('colors.secondary-text-light');
+            border-color: theme('colors.page-bg-light'); /* A subtle border on dark background */
+        }
+
+
+        /* Custom scrollbar for a polished look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #4a5568; /* Darker slate */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #718096; /* Medium slate */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a0aec0; /* Lighter slate on hover */
+        }
+        /* Fade-in animation for sections */
+        .animate-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Adjust animation delay for each section for a staggered effect */
+        .header-section { animation-delay: 0s; }
+        .about-section { animation-delay: 0.2s; }
+        .skills-section { animation-delay: 0.4s; }
+        .certifications-section { animation-delay: 0.6s; }
+        .portfolio-section { animation-delay: 0.8s; }
+        .contact-section { animation-delay: 1.0s; }
+
+        /* Smooth scroll for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Styling for the embedded code block */
+        .sql-code-block {
+            background-color: #2d3748; /* Dark background for code */
+            color: #f8f9fa; /* Light text for code */
+            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 0.875rem; /* Smaller font size for code */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto; /* Enable horizontal scrolling for long lines */
+            max-height: 300px; /* Limit height to prevent taking up too much space */
+            white-space: pre-wrap; /* Ensure line breaks are preserved */
+            margin-top: 1rem;
+        }
+    </style>
 </head>
-<body class="bg-gray-100 font-inter">
-  <!-- LinkedIn Button -->
-  <section class="p-6 text-center">
-    <a
-      href="https://www.linkedin.com/in/rasakyusuf/"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="inline-flex items-center px-6 py-3 bg-blue-600 text-white text-lg font-semibold rounded-lg shadow-md hover:bg-blue-700 transition"
-    >
-      <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M4.98 3.5C3.34 3.5 2 4.85 2 6.5S3.34 9.5 4.98 9.5 8 8.15 8 6.5 6.62 3.5 4.98 3.5zm.02 4.5c-.83 0-1.5-.67-1.5-1.5S4.17 5 5 5s1.5.67 1.5 1.5S5.83 8 5 8zM2 21h6V10H2v11zm9-11h5.2v1.71h.08c.72-1.36 2.5-2.8 5.14-2.8 5.5 0 6.5 3.62 6.5 8.34V21h-6v-4.64c0-1.1-.02-2.52-1.54-2.52s-1.78 1.2-1.78 2.44V21h-6V10z"/>
-      </svg>
-      Visit My LinkedIn
-    </a>
-  </section>
+<body class="text-gray-800">
+    <!-- Navigation Bar -->
+    <nav class="relative z-50 p-4 transition-all duration-300">
+        <div class="container mx-auto flex justify-between items-center max-w-5xl px-4">
+            <a href="#home" class="text-2xl font-extrabold text-secondary-text-light hover:text-accent-vibrant-blue transition duration-300">Rasak Yusuf</a>
+            <div class="space-x-6 text-lg font-medium">
+                <a href="#about" class="text-secondary-text-light hover:text-accent-vibrant-blue transition duration-300">About</a>
+                <a href="#skills" class="text-secondary-text-light hover:text-accent-vibrant-blue transition duration-300">Skills</a>
+                <a href="#certifications" class="text-secondary-text-light hover:text-accent-vibrant-blue transition duration-300">Certifications</a>
+                <a href="#portfolio" class="text-secondary-text-light hover:text-accent-vibrant-blue transition duration-300">Portfolio</a>
+                <a href="#contact" class="text-secondary-text-light hover:text-accent-vibrant-blue transition duration-300">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-  <!-- Tesca Dashboard Image -->
-  <section class="p-6 text-center">
-    <img
-      src="https://placehold.co/600x350.png?text=Tesca+Analytics+Dashboard"
-      alt="Tesca Dashboard Thumbnail"
-      class="mx-auto w-full max-w-lg rounded shadow-lg"
-    />
-  </section>
+    <!-- Main content container -->
+    <div class="min-h-screen flex flex-col items-center py-8 px-4 sm:px-6 lg:px-8 mt-20"> <!-- Increased top margin for navbar -->
 
-  <!-- Contact Form -->
-  <section class="p-6 max-w-xl mx-auto">
-    <form
-      action="https://formspree.io/f/mqkrnvek"
-      method="POST"
-      class="bg-white p-6 rounded shadow-md space-y-4"
-    >
-      <div>
-        <label class="block mb-1 font-semibold" for="name">Name</label>
-        <input type="text" id="name" name="name" required class="w-full border border-gray-300 rounded px-4 py-2" />
-      </div>
-      <div>
-        <label class="block mb-1 font-semibold" for="email">Email</label>
-        <input type="email" id="email" name="email" required class="w-full border border-gray-300 rounded px-4 py-2" />
-      </div>
-      <div>
-        <label class="block mb-1 font-semibold" for="message">Message</label>
-        <textarea id="message" name="message" rows="5" required class="w-full border border-gray-300 rounded px-4 py-2"></textarea>
-      </div>
-      <button type="submit" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition">
-        Send Message
-      </button>
-    </form>
-  </section>
+        <!-- Header/Hero Section (id="home" for navigation) -->
+        <header id="home" class="w-full max-w-5xl bg-gradient-to-br from-page-bg-light to-page-bg-dark text-secondary-text-light p-10 rounded-3xl shadow-2xl mb-12 text-center flex flex-col items-center justify-center min-h-[400px] header-section animate-fade-in">
+            <img src="Linkedin Photo 2.jpg" alt="Rasak Yusuf Profile Photo" class="rounded-full w-48 h-48 object-cover border-8 border-accent-vibrant-blue shadow-xl mb-6 transition duration-300">
+            <h1 class="text-5xl sm:text-6xl font-extrabold font-montserrat mb-3 leading-tight">Rasak Yusuf</h1>
+            <p class="text-2xl sm:text-3xl font-light mb-4">Business Intelligence Analyst</p>
+            <p class="text-lg sm:text-xl font-light max-w-2xl">
+                Bridging Data and Decisions: Empowering Businesses with Actionable Insights.
+            </p>
+        </header>
+
+        <!-- About Me Section (id="about" for navigation) -->
+        <section id="about" class="w-full max-w-5xl bg-card-bg-light p-10 rounded-3xl shadow-xl mb-12 about-section animate-fade-in">
+            <h2 class="text-4xl font-extrabold font-montserrat mb-6 text-center">About Me</h2>
+            <p class="text-lg leading-relaxed text-primary-text-dark">
+                As a passionate Business Intelligence Analyst, I specialize in transforming complex datasets into clear,
+                actionable insights that drive strategic decision-making. With expertise in data management, visualization,
+                and ETL development, I am adept at designing robust database solutions and crafting intuitive dashboards
+                that empower stakeholders. My goal is to bridge the gap between raw data and impactful business
+                outcomes, ensuring data integrity and fostering a data-driven culture. I am always eager to take on new
+                challenges and expand my skill set to deliver innovative solutions.
+            </p>
+        </section>
+
+        <!-- Skills Section (id="skills" for navigation) -->
+        <section id="skills" class="w-full max-w-5xl bg-card-bg-light p-10 rounded-3xl shadow-xl mb-12 skills-section animate-fade-in">
+            <h2 class="text-4xl font-extrabold font-montserrat mb-3 text-center">Core Competencies</h2>
+            <p class="text-lg text-gray-600 mb-8 text-center">Key areas of my expertise and technical proficiency</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Skill Card: Power BI -->
+                <div class="flex flex-col items-center bg-gray-50 p-6 rounded-xl shadow-md transform hover:scale-105 transition duration-300 group">
+                    <!-- Icon for Power BI: Filled Bar Chart -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="#0078D4">
+                        <rect x="5" y="10" width="4" height="8" rx="0.5" ry="0.5" fill="#005C9E"/>
+                        <rect x="10" y="6" width="4" height="12" rx="0.5" ry="0.5" fill="#0078D4"/>
+                        <rect x="15" y="3" width="4" height="15" rx="0.5" ry="0.5" fill="#005C9E"/>
+                        <path d="M2 20h20" stroke="#0078D4" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    <span class="text-xl font-semibold text-primary-text-dark">Power BI</span>
+                </div>
+                <!-- Skill Card: Data Management & Analytics -->
+                <div class="flex flex-col items-center bg-gray-50 p-6 rounded-xl shadow-md transform hover:scale-105 transition duration-300 group">
+                    <!-- Icon for Data Management & Analytics: Stacked Disks (Database) -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="#28A745">
+                        <ellipse cx="12" cy="5" rx="9" ry="3" fill="#28A745"/>
+                        <ellipse cx="12" cy="12" rx="9" ry="3" fill="#3DCC63"/>
+                        <ellipse cx="12" cy="19" rx="9" ry="3" fill="#28A745"/>
+                        <path d="M3 5v14" stroke="#1F7D37" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M21 5v14" stroke="#1F7D37" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    <span class="text-xl font-semibold text-primary-text-dark">Data Management & Analytics</span>
+                </div>
+                <!-- Skill Card: Visualization -->
+                <div class="flex flex-col items-center bg-gray-50 p-6 rounded-xl shadow-md transform hover:scale-105 transition duration-300 group">
+                    <!-- Icon for Visualization: Multi-segment Pie Chart -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="#FFC107">
+                        <circle cx="12" cy="12" r="10" fill="#FFC107"/> <!-- Base Circle -->
+                        <path d="M12 2v10h10a10 10 0 0 0-10-10z" fill="#E6A100"/> <!-- Top Right Segment -->
+                        <path d="M12 12a10 10 0 0 0 10 10H12v-10z" fill="#D69E2E"/> <!-- Bottom Right Segment -->
+                        <path d="M12 22a10 10 0 0 0-10-10h10V22z" fill="#F0CD6D"/> <!-- Left Segment -->
+                    </svg>
+                    <span class="text-xl font-semibold text-primary-text-dark">Visualization</span>
+                </div>
+                <!-- Skill Card: T-SQL -->
+                <div class="flex flex-col items-center bg-gray-50 p-6 rounded-xl shadow-md transform hover:scale-105 transition duration-300 group">
+                    <!-- Icon for T-SQL: Code Block with Lines -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="#DC3545">
+                        <rect x="3" y="5" width="18" height="14" rx="2" ry="2" fill="#DC3545"/>
+                        <rect x="4" y="6" width="16" height="12" rx="1.5" ry="1.5" fill="#B02A35"/>
+                        <line x1="6" y1="9" x2="18" y2="9" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="6" y1="12" x2="18" y2="12" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="6" y1="15" x2="18" y2="15" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    <span class="text-xl font-semibold text-primary-text-dark">T-SQL</span>
+                </div>
+                <!-- Skill Card: Report and Dashboard Development -->
+                <div class="flex flex-col items-center bg-gray-50 p-6 rounded-xl shadow-md transform hover:scale-105 transition duration-300 group">
+                    <!-- Icon for Report and Dashboard: Layered Dashboard -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="#6F42C1">
+                        <rect x="3" y="3" width="18" height="18" rx="2" ry="2" fill="#6F42C1"/> <!-- Background panel -->
+                        <rect x="5" y="5" width="14" height="4" rx="1" ry="1" fill="#C4B5FD"/> <!-- Top header panel -->
+                        <rect x="5" y="11" width="7" height="6" rx="1" ry="1" fill="#FFFFFF"/> <!-- Left chart panel -->
+                        <rect x="13" y="11" width="6" height="3" rx="1" ry="1" fill="#FFFFFF"/> <!-- Top right data panel -->
+                        <rect x="13" y="15" width="6" height="3" rx="1" ry="1" fill="#FFFFFF"/> <!-- Bottom right data panel -->
+                    </svg>
+                    <span class="text-xl font-semibold text-primary-text-dark">Report & Dashboard</span>
+                </div>
+                <!-- Skill Card: ETL Development -->
+                <div class="flex flex-col items-center bg-gray-50 p-6 rounded-xl shadow-md transform hover:scale-105 transition duration-300 group">
+                    <!-- Icon for ETL Development: Data Flow Arrows with Boxes -->
+                    <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="#FD7E14">
+                        <rect x="2" y="10" width="5" height="4" rx="1" ry="1" fill="#FD7E14"/> <!-- Source box -->
+                        <rect x="17" y="10" width="5" height="4" rx="1" ry="1" fill="#FD7E14"/> <!-- Destination box -->
+                        <path d="M7 12h3M14 12h3" stroke="#FD7E14" stroke-width="2" stroke-linecap="round"/> <!-- Connectors -->
+                        <path d="M10 9l4 3l-4 3V9z" fill="#F06000"/> <!-- Transform arrow -->
+                    </svg>
+                    <span class="text-xl font-semibold text-primary-text-dark">ETL Development</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section (id="certifications" for navigation) -->
+        <section id="certifications" class="w-full max-w-5xl bg-card-bg-light p-10 rounded-3xl shadow-xl mb-12 certifications-section animate-fade-in">
+            <h2 class="text-4xl font-extrabold font-montserrat text-primary-text-dark mb-3 text-center">My Certifications</h2>
+            <p class="text-lg text-gray-600 mb-8 text-center">My Professional Accreditations</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Certification Card: Microsoft Power BI Data Analyst -->
+                <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden flex flex-col items-center p-6 transform hover:scale-105 transition duration-300">
+                    <img src="images/badges/powerbi-badge.png" alt="Microsoft Power BI Data Analyst Certification" class="w-28 h-28 object-contain mb-4 rounded-lg">
+                    <h3 class="text-lg font-semibold text-primary-text-dark text-center mb-1">Microsoft Certified: Power BI Data Analyst Associate</h3>
+                    <p class="text-sm text-gray-600 text-center">Issued by Microsoft</p>
+                </div>
+
+                <!-- Certification Card: Microsoft Azure Data Fundamentals -->
+                <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden flex flex-col items-center p-6 transform hover:scale-105 transition duration-300">
+                    <img src="images/badges/azure-badge.png" alt="Microsoft Azure Data Fundamentals Certification" class="w-28 h-28 object-contain mb-4 rounded-lg">
+                    <div>
+                        <h3 class="text-lg font-semibold text-primary-text-dark text-center mb-1">Microsoft Certified: Azure Data Fundamentals (DP-900)</h3>
+                        <p class="text-sm text-gray-600 text-center">Issued by Microsoft</p>
+                    </div>
+                </div>
+
+                <!-- Certification Card: PMP Certification -->
+                <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden flex flex-col items-center p-6 transform hover:scale-105 transition duration-300">
+                    <img src="images/badges/pmp-badge.png" alt="Project Management Professional (PMP) Certification" class="w-28 h-28 object-contain mb-4 rounded-lg">
+                    <div>
+                        <h3 class="text-lg font-semibold text-primary-text-dark text-center mb-1">Project Management Professional (PMP)</h3>
+                        <p class="text-sm text-gray-600 text-center">Issued by Project Management Institute (PMI)</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Projects Section (id="portfolio" for navigation) -->
+        <section id="portfolio" class="w-full max-w-5xl bg-card-bg-light p-10 rounded-3xl shadow-xl mb-12 portfolio-section animate-fade-in">
+            <h2 class="text-4xl font-extrabold font-montserrat text-primary-text-dark mb-3 text-center">My Portfolio</h2>
+            <p class="text-lg text-gray-600 mb-8 text-center">A selection of projects that showcase my skills and expertise</p>
+            <!-- Grid for 2x2 layout -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Project Card 1: John Camry Income and Expenditure Analysis -->
+                <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
+                    <!-- Thumbnail placeholder -->
+                    <div class="w-full h-48 bg-gray-300 flex items-center justify-center rounded-t-xl">
+                        <span class="text-xl font-semibold text-gray-700">John Camry Dashboard</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold font-montserrat text-primary-text-dark mb-2">John Camry Income and Expenditure Dashboard</h3>
+                        <p class="text-primary-text-dark text-base mb-4">
+                            Designed and developed a Power BI visualization portal for John Camry, a cab owner,
+                            to analyze his income and expenditure. The solution provides visualizations,
+                            status indicators, trend analysis, and predictive insights to help him manage
+                            revenue and expenses effectively, accessible via mobile, laptop, and desktop.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-accent-vibrant-blue text-white text-sm font-medium px-3 py-1 rounded-full">Power BI</span>
+                            <span class="bg-accent-rich-gold text-white text-sm font-medium px-3 py-1 rounded-full">Data Visualization</span>
+                            <span class="bg-blue-600 text-white text-sm font-medium px-3 py-1 rounded-full">Financial Analysis</span>
+                            <span class="bg-purple-600 text-white text-sm font-medium px-3 py-1 rounded-full">Predictive Analytics</span>
+                        </div>
+                        <!-- Link to the PDF file -->
+                        <a href="portfolio-assets/john-camry-income-expenditure.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-2.5 bg-accent-vibrant-blue text-white font-semibold rounded-lg hover:bg-primary-text-dark transition duration-300 transform hover:scale-105 shadow-lg">
+                            View Project
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Card 2: K2A Fleets: SQL Data Management & Reporting Solution -->
+                <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
+                    <!-- Thumbnail placeholder -->
+                    <div class="w-full h-48 bg-gray-300 flex items-center justify-center rounded-t-xl">
+                        <span class="text-xl font-semibold text-gray-700">K2A Fleets SQL Project</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold font-montserrat text-primary-text-dark mb-2">K2A Fleets: SQL Data Management & Reporting Solution</h3>
+                        <p class="text-primary-text-dark text-base mb-4">
+                            Developed a comprehensive SQL Server solution for K2A Fleets, including E-R modeling,
+                            table population, and generation of 1 million rows of transactional data with complex
+                            business rules. Implemented dynamic T-SQL functions for top customer analysis and
+                            generated summary reports for S&M software testing.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-red-500 text-white text-sm font-medium px-3 py-1 rounded-full">SQL Server</span>
+                            <span class="bg-blue-500 text-white text-sm font-medium px-3 py-1 rounded-full">T-SQL</span>
+                            <span class="bg-green-600 text-white text-sm font-medium px-3 py-1 rounded-full">Database Design</span>
+                            <span class="bg-orange-500 text-white text-sm font-medium px-3 py-1 rounded-full">Data Generation</span>
+                            <span class="bg-purple-600 text-white text-sm font-medium px-3 py-1 rounded-full">Reporting</span>
+                        </div>
+                        <!-- Link to the PDF overview of the project -->
+                        <a href="portfolio-assets/k2a-fleets.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-2.5 bg-accent-vibrant-blue text-white font-semibold rounded-lg hover:bg-primary-text-dark transition duration-300 transform hover:scale-105 shadow-lg">
+                            View Project Case Study
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                        <!-- Embedded SQL Code Block -->
+                        <h4 class="text-lg font-semibold text-primary-text-dark mt-4 mb-2">SQL Solution Snippet:</h4>
+                        <pre class="sql-code-block"><code>
+ SELECT country,StateProvince,Class, count(*) as TotalTransaction, sum(orderqty) TotalQty
+ FROM PurchaseTrans
+ GROUP BY ROLLUP  (Country,StateProvince,Class)
+ ORDER BY country
+
+ SELECT country,StateProvince,Class, count(*) as TotalTransaction, sum(orderqty) TotalQty
+ FROM PurchaseTrans
+ GROUP BY CUBE  (Country,StateProvince,Class)
+ ORDER BY country
+
+ SELECT country,StateProvince,Class, count(*) as TotalTransaction, sum(orderqty) TotalQty from PurchaseTrans
+ GROUP BY GROUPING SETS (Country,StateProvince,Class)
+ ORDER BY country
+
+ CREATE DATABASE [K2A Fleets]
+ USE [K2A Fleets]
+ CREATE TABLE Float_Category
+ (
+  FloatCategoryID INT IDENTITY(1,1),
+  FloatRate FLOAT,
+  FloatExceedQty FLOAT,
+  FloatExceedRate FLOAT
+  CONSTRAINT Float_Category_pk PRIMARY KEY (FloatCategoryID)
+)
+
+ INSERT INTO Float_Category(FloatRate,FloatExceedQty,FloatExceedRate)
+ VALUES(0.4,15,0.7),
+       (0.1,15,0.6),
+	    (0.2,50,0.75),
+		(0.24,68,0.9),
+		(0.12,100,1.8)
+
+CREATE TABLE Equipment
+(
+ EquipmentID INT,
+ EquipmentName VARCHAR(255),
+ UnitPrice DECIMAL(12,2),
+ DiscountPercent FLOAT,
+ FloatCategoryID INT
+ CONSTRAINT Equipment_pk PRIMARY KEY(EquipmentID)
+ CONSTRAINT Float_Category_fk FOREIGN KEY (FloatCategoryID) REFERENCES Float_Category (FloatCategoryID)
+)
+
+Create Table Equipment
+(
+ EquipmentID int identity (1,1) primary key,
+ EquipmentName varchar(255),
+ UnitPrice decimal(12,2),
+ DiscountPercent float,
+ FloatCategoryID int foreign key references Float_Category(FloatCategoryID)
+)
+
+select * from Equipment
+insert into Equipment(EquipmentName,UnitPrice,DiscountPercent,FloatCategoryID)
+Values('Cup -Lock System of Shuttering – 3.2 M high',122.50,0.015,1),
+      ( 'Steel Props – 4.2 M High',100,0.02,1),
+	  ( 'Steel shuttering plates – 3 ft x 2 ft',1000.50,0.05,1),
+	  ( 'Steel section Girders – 8ft to 12 ft' ,1700.00,0.01,1),
+	  ( 'Steel pipes for scaffolding',15000.00,0.08,1),
+	  ( 'Telescopic Girders',200,0.4,1),
+	  ( 'Tower Crane',233,0.14,1),
+	  ( 'Tractor mounted Crane' ,105,0.4,1),
+	  ( 'Concrete batching plant' ,1325.70,0.015,1),
+	  ( 'Mobile batching plant' ,99.87,0.011,1),
+	  ( 'Concrete Pump (Greaves – 40 cum/hr)',1500.50,0.095,1),
+	  ( 'Tremix machine set with trowel & floater',700.69,0.15,1),
+	  ( 'Concrete mixers',120,0.15,1),
+	  ( 'D.G. Set – 82.KVA' ,12.50,0.15,1),
+	  ( 'Vibrators (Electrical)',200.99,0.001,1),
+	  ( 'Vibrators (Petrol)',4100.90,0.03,1),
+	  ( 'Stone cutting machine (Platform type)',1200.56,0.09,1),
+	  ( 'Stone cutting machine (hand type)' ,1780,0.0094,1),
+	  ( 'Groove cutting machine',122.50,0.5,1),
+	  ( 'Builder’sÂ Hoist with winch',122.50,0.5,1),
+	  ( 'Bar Bending & cutting machine' ,122.50,0.5,1),
+	  ( 'Truck' ,122.50,0.5,1),
+	  ( 'Air Compressor',122.50,0.5,1),
+	  ( 'Road Roller',122.50,0.5,1),
+	  ( 'Vibro-Roller',122.50,0.5,1),
+	  ( 'Tipper – Tata' ,122.50,0.5,1),
+	  ( 'Excavator – ACE' ,122.50,0.5,1),
+	  ( 'Tractor with trolly – 40 HP',122.50,0.5,1),
+	  ( 'Water pump',122.50,0.5,1),
+	  ( 'Cutter Hitachi – Model CM 45',122.50,0.5,1),
+	  ( 'Welding Set – Aircooled',122.50,0.5,1),
+	  ( 'Drilling Machine Bosch – GSB – 16' ,122.50,0.5,1),
+	  ( 'Mud pump – GEC – 1 HP 2 HP',122.50,0.5,1),
+	  ( 'Floor Grinding machine – 2 HP' ,122.50,0.5,1),
+	  ( 'Earth Compactor – 7.5 HP motor',122.50,0.5,1),
+	  ( 'CGI Sheets – 10′, 12′ Long' ,122.50,0.5,1)
+
+Create table Customer
+     (
+	  CustomerID int identity (1,1),
+      CustomerName varchar(255),
+	  Category varchar(255),
+	  PrimaryContact varchar(255),
+	  ReferenceNo varchar(255),
+	  PaymentDays int,
+	  PostalCode int
+	  constraint customer_pk primary key (customerID)
+     )
+
+insert into Customer(CustomerName,Category,PrimaryContact,ReferenceNo,PaymentDays,PostalCode)
+values('A Datum Corporation','Novelty Goods Supplier','Reio Kabin','AA20384',14,46077),
+       ('Woodgrove Bank','Financial Services Supplier','Hubert Helms','28034202',7,94101),
+	   ('Consolidated Messenger','Courier','Kerstin Parn','209340283',30,94101),
+	   ('Litware Inc.','Packaging Supplier','Elias Myllari','BC0280982',30,95245),
+	   ('Humongous Insurance','Insurance Services Supplier','Madelaine Cartier','82420938',14,37770),
+	   ('Graphic Design Institute','Novelty Goods Supplier','Penny Buck','8803922',14,64847),
+	   ('Fabrikam Inc.','Clothing Supplier','Bill Lawson','293092',30,40351),
+	   ('The Phone Company','Novelty Goods Supplier','Hai Dam','237408032',30,56732),
+	   ('Trey Research','Marketing Services Supplier','Donald Jones','82304822',7,57543),
+	   ('Lucerne Publishing','Novelty Goods Supplier','Prem Prabhu','JQ082304802',30,37659),
+	   ('Contoso Ltd.','Novelty Goods Supplier','Hanna Mihhailov','B2084020',7,98253),
+	   ('Nod Publishers','Novelty Goods Supplier','Marcos Costa','GL08029802',7,27906),
+	   ('Northwind Electric Cars','Toy Supplier','Eliza Soderberg','ML0300202',30,7860),
+	   ('A Datum Corporation','Novelty Goods Supplier','Reio Kabin','AA20384',14,46077),
+	   ('Contoso Ltd.','Novelty Goods Supplier','Hanna Mihhailov','B2084020',7,98253),
+	   ('Consolidated Messenger','Courier','Kerstin Parn','209340283',30,94101),
+	   ('Fabrikam Inc.','Clothing Supplier','Bill Lawson','293092',30,40351),
+	   ('Graphic Design Institute','Novelty Goods Supplier','Penny Buck','8803922',14,64847),
+	   ('Humongous Insurance','Insurance Services Supplier','Madelaine Cartier','82420938',14,37770),
+	   ('Litware Inc.','Packaging Supplier','Elias Myllari','BC0280982',30,95245),
+	   ('Lucerne Publishing','Novelty Goods Supplier','Prem Prabhu','JQ082304802',30,37659),
+	   ('Nod Publishers','Novelty Goods Supplier','Marcos Costa','GL08029802',7,27906),
+	   ('Northwind Electric Cars','Toy Supplier','Eliza Soderberg','ML0300202',30,7860),
+	   ('Trey Research','Marketing Services Supplier','Donald Jones','82304822',7,57543),
+	   ('The Phone Company','Novelty Goods Supplier','Hai Dam','237408032',30,56732),
+	   ('Woodgrove Bank','Financial Services Supplier','Hubert Helms','28034202',7,94101),
+	   ('Consolidated Messenger','Courier Services Supplier','Kerstin Parn','209340283',30,94101)
+
+select * from Customer
+
+Declare @StartDate Date='2015-01-01'
+Declare @EndDate Date='2019-05-31'
+Declare @TransDate date
+Declare @MaxCounter int=1000000
+Declare @StartCounter int=1
+Declare @CustomerID int
+Declare @EquipmentID int
+Declare @Quantity float
+Declare @GrossAmount decimal(12,2)
+Declare @DiscountAmount decimal(12,2)
+Declare @FloatRateAmount decimal(12,2)
+Declare @FloatExceededAmount decimal(12,2)
+Declare @PostalVariationAmount decimal(12,2)
+/*create table Equipment_Transaction
+    (
+	  TransID int identity(1,1),
+	  TransDate datetime,
+	  CustomerID int,
+	  EquipmentID int,
+	  Quantity float,
+	  GrossAmount decimal(12,2),
+	  DiscountAmount decimal(12,2),
+	  FloatRateAmount decimal(12,2),
+	  FloatExceededAmount decimal(12,2),
+	  PostalVariationAmount decimal(12,2)
+	  Constraint Equipment_Transaction_pk primary key(TransID),
+	  constraint CustomerID_fk foreign key (customerID) references Customer(CustomerID),
+	  Constraint EquipmentID_fk foreign key (EquipmentID) references Equipment(EquipmentID)
+)*/
+While @StartCounter<=@MaxCounter
+Begin
+  Select @TransDate= (select (Dateadd(day,convert(int,Rand()*(  datediff(day,@StartDate,@EndDate)))+1,@StartDate) ))
+  Select @CustomerID=(select convert(int,rand()*(select max(CustomerID) from Customer)) + (select min(customerID) from Customer))
+  Select @EquipmentID=(select convert(int, rand()*(select max(EquipmentID) from Equipment)) + (select min(EquipmentID) from Equipment))
+  select @Quantity=round((select convert(float,rand()*1000)),2)
+  select @GrossAmount=(SELECT UnitPrice FROM Equipment WHERE EquipmentID = @EquipmentId)*@Quantity
+  select @DiscountAmount=(select DiscountPercent from Equipment where EquipmentID = @EquipmentId)*@Quantity
+  select @FloatRateAmount=case
+                              when @Quantity >100 and @Quantity<150 then @Quantity*FloatRate
+							  Else '0'
+							  End
+							  from Float_Category FC
+							  inner join Equipment E on fc.FloatCategoryID=E.FloatCategoryID
+
+  select @FloatExceededAmount=case
+                              when @Quantity>150 then FloatExceedRate*@Quantity
+							  Else '0'
+							  End
+							  from Float_Category FC
+							  inner join Equipment E on fc.FloatCategoryID=E.FloatCategoryID
+
+  select @PostalVariationAmount= case
+                                          when PostalCode>=7000 and PostalCode<=50000 then @Quantity*0.002
+										  when PostalCode>=50001 and PostalCode<=70000 then @Quantity*0.050
+										  when PostalCode>=70001 and PostalCode<=90000 then @Quantity*0.062
+										  Else @Quantity*0.0078
+										  End
+										  from Customer
+
+insert into Equipment_Transaction(TransDate,CustomerID,EquipmentID,Quantity,GrossAmount,DiscountAmount,FloatRateAmount,FloatExceededAmount,PostalVariationAmount)
+select @TransDate,@CustomerID,@EquipmentID,@Quantity,@GrossAmount,@DiscountAmount,@FloatRateAmount,@FloatExceededAmount,@PostalVariationAmount
+
+  select @StartCounter=@StartCounter+1
+End
+
+
+
+Truncate table equipment_transaction
+select * from equipment_transaction
+
+create function dbo.TopCustomer (@Year int, @TopN int)
+RETURNS TABLE
+AS
+RETURN
+  (
+   SELECT Top (@TopN)c.CustomerID,c.CustomerName,sum(GrossAmount) as PurchaseAmount from Equipment_Transaction E
+   inner join Customer c on E.CustomerID=c.CustomerID
+   where year(TransDate)=@Year
+   Group by c.CustomerID,c.CustomerName
+   order by sum(GrossAmount) desc
+
+  )
+
+
+   select * from dbo.TopCustomer (2019,10)
+
+  select EquipmentName,sum(GrossAmount)as PurchaseAmount,year(TransDate) TransYear  from Equipment_Transaction ET
+  inner join Equipment E on E.EquipmentID=ET.EquipmentID
+  where EquipmentName in (' Cup -Lock System of Shuttering – 3.2 M high','Bar Bending & cutting machine')
+  group by EquipmentName,year(TransDate)
+
+  select EquipmentName,sum(unitprice*Quantity) as Total,year(TransDate) TransYear  from Equipment_Transaction ET
+  inner join Equipment E on E.EquipmentID=ET.EquipmentID
+  where equipmentName in (' Cup -Lock System of Shuttering – 3.2 M high','Bar Bending & cutting machine')
+  group by EquipmentName,year(TransDate)
+
+ /* Dataset and Summary data are needed for testing S & M Software
+ */
+use [K2A Fleets]
+
+SELECT e.EquipmentName as Equipment,
+     format( SUM(case when year(t.Transdate) = 2015 then grossamount end),'C') as '2015',
+	 format( SUM(case when year(t.Transdate) = 2016 then grossamount end),'C') as '2016',
+	 format( SUM(case when year(t.Transdate) = 2017 then grossamount end),'C') as '2017',
+	 format( SUM(case when year(t.Transdate) = 2018 then grossamount end),'C') as '2018',
+	 format( SUM(case when year(t.Transdate) = 2019 then grossamount end),'C') as '2019'
+    FROM
+       Equipment_Transaction t
+    INNER JOIN
+        Equipment e ON t.EquipmentID = e.EquipmentID
+Group BY EquipmentName;
+
+
+---2nd Method
+SELECT EquipmentName,
+       FORMAT([2015],'C') AS [2015],
+       FORMAT([2016],'C') AS [2016],
+       FORMAT([2017],'C') AS [2017],
+       FORMAT([2018],'C') AS [2018],
+       FORMAT([2019],'C') AS [2019]
+FROM
+    (SELECT e.EquipmentName,
+            YEAR(t.Transdate) AS TransYear,
+            t.GrossAmount
+     FROM Equipment_Transaction T
+     INNER JOIN Equipment E ON T.EquipmentID = E.EquipmentID) D
+PIVOT
+    (SUM(GrossAmount) FOR TransYear IN ([2015],[2016],[2017],[2018],[2019])) G;
+```</pre>
+                        <!-- Optional: Add a download button for the SQL file -->
+                        <a href="portfolio-assets/k2a-fleets.sql" download="k2a-flelets.sql" target="_blank" rel="noopener noreferrer" class="inline-flex items-center mt-2 sm:mt-4 px-5 py-2.5 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-300 transform hover:scale-105 shadow-lg">
+                            Download SQL File
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Card 3: Falanza Agro-Allied: Poultry Performance Analysis Report -->
+                <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
+                    <!-- Thumbnail placeholder -->
+                    <div class="w-full h-48 bg-gray-300 flex items-center justify-center rounded-t-xl">
+                        <span class="text-xl font-semibold text-gray-700">Falanza Dashboard</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold font-montserrat text-primary-text-dark mb-2">Falanza Agro-Allied: Poultry Performance Analysis Report</h3>
+                        <p class="text-primary-text-dark text-base mb-4">
+                            Developed a comprehensive Power BI report addressing key concerns for Falanza Agro-Allied,
+                            including inconsistent egg production, daily mortality, and the rising costs vs. revenues.
+                            This detailed report provides in-depth analysis of egg collection, mortality rates, feeding costs,
+                            monthly revenue, and includes trend analysis and forecasting for informed bird disposition.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-accent-vibrant-blue text-white text-sm font-medium px-3 py-1 rounded-full">Power BI</span>
+                            <span class="bg-accent-rich-gold text-white text-sm font-medium px-3 py-1 rounded-full">Data Analysis</span>
+                            <span class="bg-green-600 text-white text-sm font-medium px-3 py-1 rounded-full">Performance Metrics</span>
+                            <span class="bg-purple-600 text-white text-sm font-medium px-3 py-1 rounded-full">Trend Analysis</span>
+                            <span class="bg-orange-500 text-white text-sm font-medium px-3 py-1 rounded-full">Forecasting</span>
+                        </div>
+                        <!-- IMPORTANT: This button now links to the PDF version of your report. Removed download attribute. -->
+                        <a href="portfolio-assets/falanza-report.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-2.5 bg-accent-vibrant-blue text-white font-semibold rounded-lg hover:bg-primary-text-dark transition duration-300 transform hover:scale-105 shadow-lg">
+                            View Report (PDF)
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Card 4: Tesca Grocery Chain: Comprehensive HR & Sales Analytics -->
+                <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
+                    <!-- Thumbnail placeholder -->
+                    <div class="w-full h-48 bg-gray-300 flex items-center justify-center rounded-t-xl">
+                        <span class="text-xl font-semibold text-gray-700">Tesca Analytics Dashboard</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold font-montserrat text-primary-text-dark mb-2">Tescsa Grocery Chain: Comprehensive HR & Sales Analytics</h3>
+                        <p class="text-primary-text-dark text-base mb-4">
+                            Developed an Enterprise Data Warehouse and Data Mart Cubes (Multidimensional and Tabular Models) for Tesca Grocery Chain.
+                            This solution consolidates sales, purchase, employee overtime, absence, and misconduct data,
+                            providing actionable insights through Power BI visualizations. Key analyses include product movement,
+                            market basket mix, vendor efficiency, product rebranding impact, and HR trends in overtime, absence, and misconduct.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="bg-blue-700 text-white text-sm font-medium px-3 py-1 rounded-full">Power BI</span>
+                            <span class="bg-green-700 text-white text-sm font-medium px-3 py-1 rounded-full">Data Warehousing</span>
+                            <span class="bg-red-700 text-white text-sm font-medium px-3 py-1 rounded-full">SSAS</span>
+                            <span class="bg-cyan-700 text-white text-sm font-medium px-3 py-1 rounded-full">SQL Server</span>
+                            <span class="bg-indigo-700 text-white text-sm font-medium px-3 py-1 rounded-full">HR Analytics</span>
+                            <span class="bg-yellow-700 text-white text-sm font-medium px-3 py-1 rounded-full">Sales Analytics</span>
+                        </div>
+                        <!-- Link to the PDF containing the visualizations -->
+                        <a href="portfolio-assets/Tesca Power BI.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-2.5 bg-accent-vibrant-blue text-white font-semibold rounded-lg hover:bg-primary-text-dark transition duration-300 transform hover:scale-105 shadow-lg">
+                            View Visualizations (PDF)
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                        <!-- Link to the project case study PDF -->
+                        <a href="portfolio-assets/Tesca Grocery Analytics Project.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-5 py-2.5 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-800 transition duration-300 transform hover:scale-105 shadow-lg mt-2 md:mt-0 ml-0 md:ml-4">
+                            View Case Study (PDF)
+                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section (id="contact" for navigation) -->
+        <section id="contact" class="w-full max-w-5xl bg-card-bg-light p-10 rounded-3xl shadow-xl mb-12 contact-section animate-fade-in">
+            <h2 class="text-4xl font-extrabold font-montserrat text-primary-text-dark mb-6 text-center">Get in Touch</h2>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-6 mb-8">
+                <!-- LinkedIn Button -->
+                <a href="[https://www.linkedin.com/in/rasak-yusuf/](https://www.linkedin.com/in/rasak-yusuf/)" target="_blank" rel="noopener noreferrer" class="flex items-center px-8 py-4 bg-accent-vibrant-blue text-white text-xl font-bold rounded-full shadow-lg hover:bg-primary-text-dark transition duration-300 transform hover:scale-105">
+                    <svg class="w-8 h-8 mr-4" fill="currentColor" viewBox="0 0 24 24" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    Connect on LinkedIn
+                </a>
+            </div>
+            <!-- "Send Me a Message" Button (Mailto) -->
+            <div class="w-full max-w-lg mx-auto text-center">
+                <h3 class="text-2xl font-semibold font-montserrat text-primary-text-dark mb-4">Or Send Me an Email!</h3>
+                <a href="mailto:rasakyusuf@gmail.com?subject=Portfolio%20Inquiry&body=Hello%20Rasak,%0A%0AI%20am%20contacting%20you%20regarding%20your%20portfolio..."
+                   class="inline-flex items-center px-8 py-3 bg-accent-vibrant-blue text-white font-bold text-lg rounded-xl shadow-lg hover:bg-primary-text-dark transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-vibrant-blue focus:ring-offset-2">
+                    <svg class="w-8 h-8 mr-4" fill="currentColor" viewBox="0 0 24 24" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    Send Email
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="w-full max-w-5xl text-center text-gray-500 text-sm mt-12 py-6 border-t border-gray-300">
+            &copy; 2025 Rasak Yusuf. All rights reserved.
+        </footer>
+    </div>
 </body>
 </html>
