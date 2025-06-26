@@ -18,6 +18,7 @@
                     fontFamily: {
                         inter: ['Inter', 'sans-serif'],
                         montserrat: ['Montserrat', 'sans-serif'], /* New font for headings */
+                        lora: ['Lora', 'serif'], /* New font for abstract-like text */
                     },
                     colors: {
                         'page-bg-dark': '#1a202c', /* Very dark blue-grey for main page background (gradient start) */
@@ -34,8 +35,8 @@
             }
         }
     </script>
-    <!-- Google Fonts for Inter and Montserrat -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Google Fonts for Inter, Montserrat, and Lora -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <style>
         /* Apply custom font and background color */
         body {
@@ -159,6 +160,11 @@
             white-space: pre-wrap; /* Ensure line breaks are preserved */
             margin-top: 1rem;
         }
+        /* Custom style for abstract-like text */
+        .abstract-text {
+            font-family: 'Lora', serif; /* Apply Lora font */
+            font-style: italic; /* Make it italic */
+        }
     </style>
 </head>
 <body class="text-gray-800">
@@ -192,7 +198,7 @@
         <!-- About Me Section (id="about" for navigation) -->
         <section id="about" class="w-full max-w-5xl bg-card-bg-light p-10 rounded-3xl shadow-xl mb-12 about-section animate-fade-in">
             <h2 class="text-4xl font-extrabold font-montserrat mb-6 text-center">About Me</h2>
-            <p class="text-lg leading-relaxed text-primary-text-dark">
+            <p class="text-lg leading-relaxed text-primary-text-dark abstract-text">
                 As a passionate Business Intelligence Analyst, I specialize in transforming complex datasets into clear,
                 actionable insights that drive strategic decision-making. With expertise in data management, visualization,
                 and ETL development, I am adept at designing robust database solutions and crafting intuitive dashboards
@@ -678,7 +684,7 @@ PIVOT
                 <div class="bg-gray-50 rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300">
                     <!-- Thumbnail placeholder -->
                     <div class="w-full h-48 bg-gray-300 flex items-center justify-center rounded-t-xl">
-                        <span class="text-xl font-semibold text-gray-700">Tesca Analytics Dashboard</span>
+                        <span class="text-xl font-semibold text-gray-700">Tescsa Analytics Dashboard</span>
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-semibold font-montserrat text-primary-text-dark mb-2">Tescsa Grocery Chain: Comprehensive HR & Sales Analytics</h3>
