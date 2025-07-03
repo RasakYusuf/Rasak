@@ -54,6 +54,18 @@
             color: #3b82f6; /* Tailwind's text-blue-500 */
             text-decoration: none;
             border-radius: 0.5rem; /* Tailwind's rounded-lg */
+            display: flex; /* Allow flex properties for image alignment */
+            align-items: center;
+            height: 40px; /* Set a fixed height for the logo area */
+        }
+
+        .navbar .logo img {
+            height: 100%; /* Make image fill the logo area height */
+            width: auto; /* Maintain aspect ratio */
+            border-radius: 50%; /* Make it circular */
+            object-fit: cover;
+            border: 2px solid #3b82f6; /* Small border around the logo image */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .nav-links {
@@ -514,7 +526,9 @@
     <header class="main-header">
         <nav class="navbar">
             <div class="logo">
-                <a href="#hero">Rasak Yusuf</a>
+                <a href="#hero">
+                    <img src="https://github.com/RasakYusuf/Rasak/blob/main/Rasak%20Yusuf%20Photo.jpg?raw=true" alt="Rasak Yusuf Photo" class="logo-photo">
+                </a>
             </div>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
@@ -532,7 +546,7 @@
         <div class="hero-content">
             <!-- Your professional photo in the hero section -->
             <img src="https://github.com/RasakYusuf/Rasak/blob/main/Rasak%20Yusuf%20Photo.jpg?raw=true" alt="Rasak Yusuf Photo" class="hero-photo">
-            <h1>Hi, my name is Rasak Yusuf</h1>
+            <h1>Hi, I'm Rasak Yusuf</h1>
             <p class="tagline">I build impactful BI solutions.</p>
             <div class="hero-buttons">
                 <a href="#projects" class="button primary-button">View My Work</a>
