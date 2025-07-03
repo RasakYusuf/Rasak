@@ -1,706 +1,697 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rasak Yusuf - Business Intelligence Analyst</title>
-    <meta name="description" content="Rasak Yusuf's professional portfolio showcasing expertise in Business Intelligence, Data Analytics, T-SQL, Power BI, and Azure.">
-    <meta name="keywords" content="Rasak Yusuf, Business Intelligence, Data Analyst, Power BI, T-SQL, Azure, Portfolio, Data Visualization, ETL, SQL Server">
-    <meta name="author" content="Rasak Yusuf">
+    <title>Rasak Yusuf - BI Solutions Expert</title>
+    <!-- Favicon (optional - if you have a favicon.png in the root, it will be used) -->
+    <link rel="icon" href="favicon.png" type="image/png">
 
-    <!-- Favicon (Placeholder - replace with your own) -->
-    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%2364ffda' d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15H9v-6h2v6zm3-10h-2V7h2v2z'/%3E%3C/svg%3E" type="image/svg+xml">
+    <!-- Google Fonts: Inter (for general text) and Poppins (for headings) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
 
-    <!-- Essential for preventing caching issues on GitHub Pages -->
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta http-equiv="expires" content="0">
-    <meta http-equiv="pragma" content="no-cache">
-
-    <!-- Load Tailwind CSS from CDN -->
+    <!-- Tailwind CSS CDN for utility classes -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Configure Tailwind to use custom colors and fonts -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        poppins: ['Poppins', 'sans-serif'],
-                        inter: ['Inter', 'sans-serif'],
-                        montserrat: ['Montserrat', 'sans-serif'],
-                    },
-                    colors: {
-                        'primary-bg': '#0a192f',       /* Dark blue background */
-                        'accent-color': '#64ffda',     /* Vibrant teal accent */
-                        'light-text': '#ccd6f6',       /* Light grey-blue for main text */
-                        'secondary-text': '#8892b0',   /* Muted grey-blue for secondary text */
-                        'card-bg': '#112240',          /* Slightly lighter dark blue for cards */
-                        'nav-bg': 'rgba(10, 25, 47, 0.85)', /* Semi-transparent nav background */
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- Google Fonts for Poppins, Inter, and Montserrat -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- AOS (Animate On Scroll) Library -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Font Awesome for icons (LinkedIn, Email, GitHub, etc.) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <style>
-        /* Apply custom fonts and background */
+        /* Custom CSS for specific elements not easily handled by Tailwind or for consistent styling */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: theme('colors.primary-bg');
-            color: theme('colors.light-text');
+            color: #333;
+            background-color: #f8fafc; /* Tailwind's bg-slate-50 */
+            line-height: 1.6;
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links */
         }
-        h1, h2, h3, h4, h5, h6 {
+
+        h1, h2, h3 {
             font-family: 'Poppins', sans-serif;
-            color: theme('colors.light-text');
-        }
-        /* Specific styling for secondary text */
-        .secondary-text {
-            color: theme('colors.secondary-text');
-        }
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: theme('colors.primary-bg');
-        }
-        ::-webkit-scrollbar-thumb {
-            background: theme('colors.secondary-text');
-            border-radius: 10px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: theme('colors.accent-color');
+            color: #1a202c; /* Tailwind's text-gray-900 */
         }
 
-        /* Sticky navigation bar with blur effect */
-        .sticky-nav {
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); /* Safari support */
-        }
-
-        /* Project card image overlay for hover effect */
-        .project-card-img-overlay {
-            position: absolute;
+        /* Header and Navigation */
+        .main-header {
+            background-color: #ffffff; /* White background */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: sticky;
             top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(100, 255, 218, 0.2); /* Accent color with transparency */
-            transition: background-color 0.3s ease;
-            opacity: 0;
-        }
-        .project-card:hover .project-card-img-overlay {
-            opacity: 1;
-            background-color: rgba(100, 255, 218, 0.1); /* Slightly less opaque on hover */
-        }
-        .project-card-img {
-            transition: transform 0.3s ease;
-        }
-        .project-card:hover .project-card-img {
-            transform: scale(1.05); /* Slight zoom on image */
+            z-index: 1000;
         }
 
-        /* SQL code block styling */
-        .sql-code-block {
-            background-color: #1a202c; /* Darker background for code */
-            color: #e2e8f0; /* Light text for code */
-            font-family: 'Consolas', 'Monaco', 'Andale Mono', 'Ubuntu Mono', monospace;
-            font-size: 0.875rem; /* Smaller font size for code */
-            padding: 1rem;
-            border-radius: 0.5rem;
-            overflow-x: auto; /* Enable horizontal scrolling for long lines */
-            max-height: 300px; /* Limit height to prevent taking up too much space */
-            white-space: pre-wrap; /* Ensure line breaks are preserved */
-            margin-top: 1rem;
-            border: 1px solid theme('colors.secondary-text');
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+        }
+
+        .navbar .logo a {
+            font-size: 1.75rem; /* Tailwind's text-2xl */
+            font-weight: 700; /* Tailwind's font-bold */
+            color: #3b82f6; /* Tailwind's text-blue-500 */
+            text-decoration: none;
+            border-radius: 0.5rem; /* Tailwind's rounded-lg */
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem; /* Tailwind's gap-6 */
+        }
+
+        .nav-links li {
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #4a5568; /* Tailwind's text-gray-700 */
+            font-weight: 600; /* Tailwind's font-semibold */
+            text-decoration: none;
+            padding: 0.5rem 0.75rem;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            border-radius: 0.5rem; /* Tailwind's rounded-lg */
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6; /* Tailwind's text-blue-500 */
+            background-color: #eff6ff; /* Tailwind's bg-blue-50 */
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-color: #e0f2fe; /* Tailwind's bg-blue-100 */
+            text-align: center;
+            padding: 6rem 1.5rem; /* Tailwind's py-24 px-6 */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 80px); /* Adjust based on header height */
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem; /* Tailwind's text-6xl */
+            font-weight: 700; /* Tailwind's font-bold */
+            margin-bottom: 1rem; /* Tailwind's mb-4 */
+            color: #1a202c; /* Tailwind's text-gray-900 */
+        }
+
+        .hero-content .tagline {
+            font-size: 1.5rem; /* Tailwind's text-2xl */
+            color: #4a5568; /* Tailwind's text-gray-700 */
+            margin-bottom: 2rem; /* Tailwind's mb-8 */
+        }
+
+        .hero-buttons .button {
+            display: inline-block;
+            padding: 0.75rem 1.5rem; /* Tailwind's py-3 px-6 */
+            font-weight: 600; /* Tailwind's font-semibold */
+            border-radius: 0.75rem; /* Tailwind's rounded-xl */
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            margin: 0.5rem; /* Tailwind's m-2 */
+        }
+
+        .hero-buttons .primary-button {
+            background-color: #3b82f6; /* Tailwind's bg-blue-500 */
+            color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Tailwind's shadow-md */
+        }
+
+        .hero-buttons .primary-button:hover {
+            background-color: #2563eb; /* Tailwind's bg-blue-600 */
+            transform: translateY(-2px);
+        }
+
+        .hero-buttons .secondary-button {
+            background-color: #ffffff; /* Tailwind's bg-white */
+            color: #3b82f6; /* Tailwind's text-blue-500 */
+            border: 2px solid #3b82f6; /* Tailwind's border-2 border-blue-500 */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Tailwind's shadow-sm */
+        }
+
+        .hero-buttons .secondary-button:hover {
+            background-color: #eff6ff; /* Tailwind's bg-blue-50 */
+            transform: translateY(-2px);
+        }
+
+        .social-links {
+            margin-top: 2rem; /* Tailwind's mt-8 */
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem; /* Tailwind's gap-6 */
+        }
+
+        .social-links a {
+            color: #4a5568; /* Tailwind's text-gray-700 */
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .social-links a:hover {
+            color: #3b82f6; /* Tailwind's text-blue-500 */
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 4rem 1.5rem; /* Tailwind's py-16 px-6 */
+            text-align: center;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-size: 2.5rem; /* Tailwind's text-4xl */
+            font-weight: 700; /* Tailwind's font-bold */
+            margin-bottom: 2.5rem; /* Tailwind's mb-10 */
+            position: relative;
+            display: inline-block;
+            color: #1a202c; /* Tailwind's text-gray-900 */
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #3b82f6; /* Tailwind's bg-blue-500 */
+            margin: 0.75rem auto 0; /* Tailwind's mt-3 mx-auto */
+            border-radius: 0.25rem; /* Tailwind's rounded */
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem; /* Tailwind's gap-8 */
+            align-items: center;
+            text-align: left;
+        }
+
+        @media (min-width: 768px) { /* Tailwind's md breakpoint */
+            .about-grid {
+                grid-template-columns: 1fr 2fr;
+            }
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 1rem; /* Tailwind's rounded-2xl */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Tailwind's shadow-xl */
+            object-fit: cover;
+            margin: 0 auto; /* Center image on small screens */
+            display: block;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem; /* Tailwind's mb-4 */
+            font-size: 1.125rem; /* Tailwind's text-lg */
+            color: #4a5568; /* Tailwind's text-gray-700 */
+        }
+
+        .download-resume-button {
+            margin-top: 1.5rem; /* Tailwind's mt-6 */
+            display: inline-block;
+            background-color: #10b981; /* Tailwind's bg-emerald-500 */
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-resume-button:hover {
+            background-color: #059669; /* Tailwind's bg-emerald-600 */
+            transform: translateY(-2px);
+        }
+
+        /* Skills Section */
+        .light-bg {
+            background-color: #f0f4f8; /* A slightly lighter background for contrast */
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem; /* Tailwind's gap-8 */
+            text-align: left;
+        }
+
+        .skill-category {
+            background-color: #ffffff;
+            padding: 1.5rem; /* Tailwind's p-6 */
+            border-radius: 1rem; /* Tailwind's rounded-2xl */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-category h3 {
+            font-size: 1.5rem; /* Tailwind's text-2xl */
+            font-weight: 600; /* Tailwind's font-semibold */
+            margin-bottom: 1rem; /* Tailwind's mb-4 */
+            color: #3b82f6; /* Tailwind's text-blue-500 */
+        }
+
+        .skill-category ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-category li {
+            font-size: 1.05rem; /* Tailwind's text-lg */
+            margin-bottom: 0.75rem; /* Tailwind's mb-3 */
+            color: #4a5568; /* Tailwind's text-gray-700 */
+            display: flex;
+            align-items: center;
+        }
+
+        .skill-category li::before {
+            content: '✓'; /* Checkmark icon */
+            color: #10b981; /* Tailwind's text-emerald-500 */
+            font-weight: bold;
+            margin-right: 0.5rem; /* Tailwind's mr-2 */
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem; /* Tailwind's gap-8 */
+        }
+
+        .project-item {
+            background-color: #ffffff;
+            border-radius: 1rem; /* Tailwind's rounded-2xl */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .project-item img {
+            width: 100%;
+            height: 200px; /* Fixed height for consistency */
+            object-fit: cover;
+            border-bottom: 1px solid #e2e8f0; /* Tailwind's border-b border-gray-200 */
+        }
+
+        .project-item h3 {
+            font-size: 1.375rem; /* Tailwind's text-xl */
+            font-weight: 600;
+            margin: 1.25rem 1.5rem 0.75rem; /* Tailwind's mt-5 mx-6 mb-3 */
+            color: #1a202c;
+        }
+
+        .project-item p {
+            font-size: 1rem; /* Tailwind's text-base */
+            color: #4a5568;
+            padding: 0 1.5rem 1rem; /* Tailwind's px-6 pb-4 */
+        }
+
+        .project-links {
+            display: flex;
+            justify-content: flex-start;
+            gap: 0.75rem; /* Tailwind's gap-3 */
+            padding: 0 1.5rem 1.5rem; /* Tailwind's px-6 pb-6 */
+        }
+
+        .project-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem; /* Tailwind's gap-2 */
+            padding: 0.6rem 1rem; /* Tailwind's py-2.5 px-4 */
+            font-size: 0.95rem; /* Tailwind's text-sm */
+            font-weight: 600;
+            border-radius: 0.6rem; /* Tailwind's rounded-lg */
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .project-button.primary-button { /* Reusing primary-button styling */
+            background-color: #3b82f6;
+            color: white;
+        }
+
+        .project-button.primary-button:hover {
+            background-color: #2563eb;
+        }
+
+        .project-button i {
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
+        .contact-intro {
+            font-size: 1.125rem; /* Tailwind's text-lg */
+            color: #4a5568;
+            margin-bottom: 2.5rem; /* Tailwind's mb-10 */
+        }
+
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem; /* Tailwind's gap-8 */
+            text-align: center;
+        }
+
+        .contact-item {
+            background-color: #ffffff;
+            padding: 2rem; /* Tailwind's p-8 */
+            border-radius: 1rem; /* Tailwind's rounded-2xl */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-item i {
+            color: #3b82f6;
+            margin-bottom: 1rem; /* Tailwind's mb-4 */
+            font-size: 3rem; /* Tailwind's text-5xl */
+        }
+
+        .contact-item h3 {
+            font-size: 1.5rem; /* Tailwind's text-2xl */
+            font-weight: 600;
+            margin-bottom: 0.75rem; /* Tailwind's mb-3 */
+            color: #1a202c;
+        }
+
+        .contact-item p a {
+            color: #3b82f6;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item p a:hover {
+            text-decoration: underline;
+            color: #2563eb;
+        }
+
+        /* Footer */
+        .main-footer {
+            background-color: #1a202c; /* Tailwind's bg-gray-900 */
+            color: #e2e8f0; /* Tailwind's text-gray-200 */
+            padding: 2rem 1.5rem; /* Tailwind's py-8 px-6 */
+            text-align: center;
+            font-size: 0.9rem; /* Tailwind's text-sm */
+        }
+
+        .main-footer p {
+            margin-bottom: 1rem; /* Tailwind's mb-4 */
+        }
+
+        .footer-social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.25rem; /* Tailwind's gap-5 */
+        }
+
+        .footer-social-links a {
+            color: #cbd5e0; /* Tailwind's text-gray-300 */
+            font-size: 1.5rem; /* Tailwind's text-2xl */
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+
+        .footer-social-links a:hover {
+            color: #3b82f6; /* Tailwind's text-blue-500 */
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 767px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                margin-top: 1rem;
+                gap: 0.5rem;
+            }
+            .nav-links li {
+                width: 100%;
+            }
+            .nav-links a {
+                display: block;
+                width: 100%;
+                text-align: center;
+                padding: 0.75rem;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem; /* Smaller on mobile */
+            }
+            .hero-content .tagline {
+                font-size: 1.25rem; /* Smaller on mobile */
+            }
+            section {
+                padding: 3rem 1rem; /* Less padding on mobile */
+            }
+            section h2 {
+                font-size: 2rem; /* Smaller on mobile */
+            }
+            .about-image img {
+                max-width: 250px;
+            }
         }
     </style>
 </head>
-<body class="text-light-text">
-    <!-- Navigation Bar -->
-    <nav class="fixed top-0 left-0 right-0 z-50 p-4 sticky-nav transition-all duration-300" style="background-color: theme('colors.nav-bg');">
-        <div class="container mx-auto flex justify-end items-center max-w-6xl px-4">
-            <div class="space-x-6 text-lg font-medium">
-                <a href="#about" class="text-light-text hover:text-accent-color transition duration-300">About</a>
-                <a href="#skills" class="text-light-text hover:text-accent-color transition duration-300">Skills</a>
-                <a href="#portfolio" class="text-light-text hover:text-accent-color transition duration-300">Portfolio</a>
-                <a href="#contact" class="text-light-text hover:text-accent-color transition duration-300">Contact</a>
+<body>
+
+    <!-- Header and Navigation -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="logo">
+                <a href="#hero">Rasak Yusuf</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <h1>Hi, my name is Rasak Yusuf</h1>
+            <p class="tagline">I build impactful BI solutions.</p>
+            <div class="hero-buttons">
+                <a href="#projects" class="button primary-button">View My Work</a>
+                <a href="#contact" class="button secondary-button">Get in Touch</a>
+            </div>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/rasak-yusuf" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin fa-2x"></i></a>
+                <a href="mailto:rasakyusuf@gmail.com" aria-label="Send an Email"><i class="fas fa-envelope fa-2x"></i></a>
+                <a href="https://github.com/RasakYusuf/Rasak" target="_blank" aria-label="GitHub Profile"><i class="fab fa-github fa-2x"></i></a>
             </div>
         </div>
-    </nav>
+    </section>
 
-    <!-- Main Content Container -->
-    <div class="min-h-screen flex flex-col items-center py-8 px-4 sm:px-6 lg:px-8">
-
-        <!-- Hero Section -->
-        <section id="home" class="w-full max-w-6xl flex flex-col md:flex-row items-center justify-center min-h-screen px-4 py-20 text-center md:text-left">
-            <div class="md:w-1/2 flex justify-center md:justify-end mb-8 md:mb-0 md:mr-12" data-aos="fade-right" data-aos-duration="1000">
-                <!-- Replace with your actual photo -->
-                <img src="Linkedin Photo 2.jpg" alt="Rasak Yusuf Profile Photo" class="rounded-full w-64 h-64 object-cover border-4 border-accent-color shadow-lg transform hover:scale-105 transition-transform duration-300">
-            </div>
-            <div class="md:w-1/2" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
-                <p class="text-accent-color text-lg font-medium mb-2">Hi, my name is</p>
-                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold font-poppins text-light-text mb-4 leading-tight">Rasak Yusuf.</h1>
-                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-montserrat text-secondary-text mb-6">I build impactful BI solutions.</h2>
-                <p class="text-lg sm:text-xl secondary-text max-w-md mx-auto md:mx-0">
-                    Bridging Data and Decisions: Empowering Businesses with Actionable Insights.
-                </p>
-                <div class="mt-8">
-                    <a href="#portfolio" class="inline-block px-8 py-3 border-2 border-accent-color text-accent-color font-semibold rounded-lg hover:bg-accent-color hover:text-primary-bg transition duration-300 shadow-md">
-                        View My Work
-                    </a>
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-grid">
+                <div class="about-image">
+                    <!-- Your professional photo from GitHub -->
+                    <img src="https://github.com/RasakYusuf/Rasak/blob/main/Rasak%20Yusuf%20Photo.jpg?raw=true" alt="Rasak Yusuf Photo">
                 </div>
-            </div >
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="w-full max-w-6xl bg-card-bg p-8 md:p-12 rounded-lg shadow-xl mb-20" data-aos="fade-up" data-aos-duration="1000">
-            <h2 class="text-4xl font-bold font-poppins text-accent-color mb-8 text-center">About Me</h2>
-            <div class="flex flex-col md:flex-row items-center md:items-start">
-                <div class="md:w-2/3 text-lg leading-relaxed secondary-text">
-                    <p class="mb-4">
-                        Delivering impactful end-to-end BI solutions across diverse industries, bringing over 6 years of proven expertise in transforming complex data into actionable insights. Adept at leveraging advanced analytics to empower organizations with data-driven decision-making capabilities.
-                    </p>
-                    <p>
-                        Proficient in designing, developing, and optimizing data models, reports, and integration pipelines using leading-edge technologies like Power BI and Azure services. Drives operational efficiency and strategic growth through robust business intelligence frameworks.
-                    </p>
-                    <!-- Optional Resume Download Button -->
-                    <div class="mt-8 text-center md:text-left">
-                        <a href="Rasak_Yusuf_Resume.pdf" download="Rasak_Yusuf_Resume.pdf" class="inline-block px-8 py-3 border-2 border-accent-color text-accent-color font-semibold rounded-lg hover:bg-accent-color hover:text-primary-bg transition duration-300 shadow-md">
-                            Download Resume
-                        </a>
-                    </div>
-                </div>
-                <div class="md:w-1/3 flex justify-center md:justify-end mt-8 md:mt-0 md:pl-12">
-                    <!-- Placeholder image for About section - can be replaced with a relevant graphic -->
-                    <img src="https://placehold.co/250x250/0a192f/64ffda?text=Data+Insights" alt="Data Insights Graphic" class="rounded-lg shadow-lg">
+                <div class="about-text">
+                    <p>Welcome! I am Rasak Yusuf, a professional dedicated to building impactful BI solutions. My background is in **data analytics, business intelligence development, and data warehousing**. I thrive on solving complex business problems and transforming raw data into actionable insights that drive strategic decisions.</p>
+                    <p>My journey in technology began with a **fascination for data-driven decision-making and a strong desire to help businesses grow**. I am constantly learning and adapting to new technologies in the BI landscape to deliver high-quality and efficient results.</p>
+                    <p>Outside of work, I enjoy **exploring new data visualization techniques, reading, and spending time with family**.</p>
+                    <!-- Optional: Add a link to your resume if it's a PDF in your repository root -->
+                    <a href="your-resume.pdf" target="_blank" class="button primary-button download-resume-button">Download Resume</a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="w-full max-w-6xl bg-card-bg p-8 md:p-12 rounded-lg shadow-xl mb-20" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
-            <h2 class="text-4xl font-bold font-poppins text-accent-color mb-8 text-center">My Skills</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-                <!-- Skill Card: Power BI -->
-                <div class="flex flex-col items-center p-4 rounded-lg bg-primary-bg border border-secondary-text transform hover:scale-105 transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bar-chart-2 text-accent-color mb-2"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-                    <span class="text-lg font-medium text-light-text">Power BI</span>
-                    <span class="text-sm secondary-text">(DAX, Power Query)</span>
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section light-bg">
+        <div class="container">
+            <h2>My Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Business Intelligence</h3>
+                    <ul>
+                        <li>Data Warehousing</li>
+                        <li>ETL Development</li>
+                        <li>Dashboard Design</li>
+                        <li>Reporting</li>
+                    </ul>
                 </div>
-                <!-- Skill Card: SSIS/SSRS/SSAS -->
-                <div class="flex flex-col items-center p-4 rounded-lg bg-primary-bg border border-secondary-text transform hover:scale-105 transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-database text-accent-color mb-2"><ellipse cx="12" cy="5" rx="9" ry="3"></ellipse><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M21 19c0 1.66-4 3-9 3s-9-1.34-9-3"></path><path d="M3 5v14"></path></svg>
-                    <span class="text-lg font-medium text-light-text">SSIS/SSRS/SSAS</span>
-                    <span class="text-sm secondary-text">(Microsoft BI Stack)</span>
+                <div class="skill-category">
+                    <h3>Data Tools</h3>
+                    <ul>
+                        <li>Power BI</li>
+                        <li>Tableau</li>
+                        <li>SQL Server Integration Services (SSIS)</li>
+                        <li>SQL (T-SQL, PL/SQL)</li>
+                    </ul>
                 </div>
-                <!-- Skill Card: T-SQL / Azure SQL -->
-                <div class="flex flex-col items-center p-4 rounded-lg bg-primary-bg border border-secondary-text transform hover:scale-105 transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-code text-accent-color mb-2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                    <span class="text-lg font-medium text-light-text">T-SQL</span>
-                    <span class="text-sm secondary-text">(Azure SQL)</span>
+                <div class="skill-category">
+                    <h3>Programming & Databases</h3>
+                    <ul>
+                        <li>Python (Pandas, NumPy)</li>
+                        <li>R (Data Analysis)</li>
+                        <li>SQL Databases (e.g., MS SQL Server, PostgreSQL)</li>
+                        <li>NoSQL Databases (e.g., MongoDB)</li>
+                    </ul>
                 </div>
-                <!-- Skill Card: Tableau -->
-                <div class="flex flex-col items-center p-4 rounded-lg bg-primary-bg border border-secondary-text transform hover:scale-105 transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-pie-chart text-accent-color mb-2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"></path><path d="M22 12A10 10 0 0 0 12 2v10z"></path></svg>
-                    <span class="text-lg font-medium text-light-text">Tableau</span>
-                    <span class="text-sm secondary-text">(Data Visualization)</span>
-                </div>
-                <!-- Skill Card: Excel PowerPivot -->
-                <div class="flex flex-col items-center p-4 rounded-lg bg-primary-bg border border-secondary-text transform hover:scale-105 transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid text-accent-color mb-2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-                    <span class="text-lg font-medium text-light-text">Excel PowerPivot</span>
-                    <span class="text-sm secondary-text">(Advanced Excel)</span>
-                </div>
-                <!-- Skill Card: Azure Data Factory -->
-                <div class="flex flex-col items-center p-4 rounded-lg bg-primary-bg border border-secondary-text transform hover:scale-105 transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-cloud text-accent-color mb-2"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 0 0 0 0-10z"></path></svg>
-                    <span class="text-lg font-medium text-light-text">Azure Data Factory</span>
-                    <span class="text-sm secondary-text">(ETL/Cloud)</span>
-                </div>
-                <!-- Skill Card: Azure Data Lake -->
-                <div class="flex flex-col items-center p-4 rounded-lg bg-primary-bg border border-secondary-text transform hover:scale-105 transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-hard-drive text-accent-color mb-2"><line x1="22" y1="12" x2="2" y2="12"></line><path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path><line x1="6" y1="16" x2="6.01" y2="16"></line><line x1="10" y1="16" x2="10.01" y2="16"></line></svg>
-                    <span class="text-lg font-medium text-light-text">Azure Data Lake</span>
-                    <span class="text-sm secondary-text">(Cloud Storage)</span>
-                </div>
-                <!-- Skill Card: Project Management -->
-                <div class="flex flex-col items-center p-4 rounded-lg bg-primary-bg border border-secondary-text transform hover:scale-105 transition duration-300">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-check-square text-accent-color mb-2"><polyline points="9 11 12 14 22 4"></polyline><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 012-2h11"></path></svg>
-                    <span class="text-lg font-medium text-light-text">PMP Certified</span>
-                    <span class="text-sm secondary-text">(Project Management)</span>
+                <div class="skill-category">
+                    <h3>Other</h3>
+                    <ul>
+                        <li>Data Modeling</li>
+                        <li>Data Storytelling</li>
+                        <li>Problem Solving</li>
+                        <li>Technical Communication</li>
+                    </ul>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Portfolio Projects Section -->
-        <section id="portfolio" class="w-full max-w-6xl bg-card-bg p-8 md:p-12 rounded-lg shadow-xl mb-20" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-            <h2 class="text-4xl font-bold font-poppins text-accent-color mb-8 text-center">My Portfolio</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Project Card 1: John Camry Income and Expenditure Analysis -->
-                <div class="group project-card bg-primary-bg rounded-lg shadow-lg overflow-hidden border border-secondary-text transform hover:-translate-y-2 transition-transform duration-300">
-                    <div class="relative w-full h-56 overflow-hidden">
-                        <img src="https://placehold.co/600x350/C0C9D4/0a192f?text=John+Camry+Dashboard" alt="John Camry Income and Expenditure Analysis Dashboard Thumbnail" class="project-card-img w-full h-full object-cover">
-                        <div class="project-card-img-overlay"></div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-semibold font-montserrat text-light-text mb-2">John Camry Income and Expenditure Dashboard</h3>
-                        <p class="secondary-text text-base mb-4">
-                            Designed and developed a Power BI visualization portal for John Camry, a cab owner,
-                            to analyze his income and expenditure. The solution provides visualizations,
-                            status indicators, trend analysis, and predictive insights to help him manage
-                            revenue and expenses effectively, accessible via mobile, laptop, and desktop.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-accent-color bg-opacity-20 text-accent-color text-sm font-medium px-3 py-1 rounded-full">Power BI</span>
-                            <span class="bg-accent-color bg-opacity-20 text-accent-color text-sm font-medium px-3 py-1 rounded-full">Data Visualization</span>
-                            <span class="bg-accent-color bg-opacity-20 text-accent-color text-sm font-medium px-3 py-1 rounded-full">Financial Analysis</span>
-                            <span class="bg-accent-color bg-opacity-20 text-accent-color text-sm font-medium px-3 py-1 rounded-full">Predictive Analytics</span>
-                        </div>
-                        <a href="portfolio-assets/john-camry-income-expenditure.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-2.5 border-2 border-accent-color text-accent-color font-semibold rounded-lg hover:bg-accent-color hover:text-primary-bg transition duration-300 shadow-md">
-                            View Project
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+    <!-- Projects Section -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <h2>My Projects</h2>
+            <div class="projects-grid">
+                <div class="project-item">
+                    <img src="https://placehold.co/400x250/E0F2FE/3B82F6?text=BI+Dashboard" alt="BI Dashboard Project Thumbnail">
+                    <h3>Interactive Sales Dashboard</h3>
+                    <p>Designed and developed an interactive Power BI dashboard to visualize sales performance, enabling key stakeholders to monitor trends and identify growth opportunities.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/RasakYusuf/your-sales-dashboard-repo" target="_blank" class="button project-button primary-button">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <!-- Replace with actual live demo link if available -->
+                        <a href="#" target="_blank" class="button project-button secondary-button">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
                         </a>
                     </div>
                 </div>
-
-                <!-- Project Card 2: K2A Fleets: SQL Data Management & Reporting Solution -->
-                <div class="group project-card bg-primary-bg rounded-lg shadow-lg overflow-hidden border border-secondary-text transform hover:-translate-y-2 transition-transform duration-300">
-                    <div class="relative w-full h-56 overflow-hidden">
-                        <img src="https://placehold.co/600x350/D1E9FF/0a192f?text=K2A+Fleets+SQL+Project" alt="K2A Fleets SQL Project Thumbnail" class="project-card-img w-full h-full object-cover">
-                        <div class="project-card-img-overlay"></div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-semibold font-montserrat text-light-text mb-2">K2A Fleets: SQL Data Management & Reporting Solution</h3>
-                        <p class="secondary-text text-base mb-4">
-                            Developed a comprehensive SQL Server solution for K2A Fleets, including E-R modeling,
-                            table population, and generation of 1 million rows of transactional data with complex
-                            business rules. Implemented dynamic T-SQL functions for top customer analysis and
-                            generated summary reports for S&M software testing.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-accent-color bg-opacity-20 text-accent-color text-sm font-medium px-3 py-1 rounded-full">SQL Server</span>
-                            <span class="bg-accent-color bg-opacity-20 text-accent-color text-sm font-medium px-3 py-1 rounded-full">T-SQL</span>
-                            <span class="bg-accent-color bg-opacity-20 text-accent-color text-sm font-medium px-3 py-1 rounded-full">Database Design</span>
-                            <span class="bg-accent-color bg-opacity-20 text-accent-color text-sm font-medium px-3 py-1 rounded-full">Data Generation</span>
-                            <span class="bg-accent-color bg-opacity-20 text-accent-color text-sm font-medium px-3 py-1 rounded-full">Reporting</span>
-                        </div>
-                        <a href="portfolio-assets/k2a-fleets.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-2.5 border-2 border-accent-color text-accent-color font-semibold rounded-lg hover:bg-accent-color hover:text-primary-bg transition duration-300 shadow-md">
-                            View Project Case Study
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                <div class="project-item">
+                    <img src="https://placehold.co/400x250/FFFBEB/D97706?text=ETL+Pipeline" alt="ETL Pipeline Project Thumbnail">
+                    <h3>Automated Data Migration System</h3>
+                    <p>Engineered a robust ETL pipeline using SQL Server Integration Services (SSIS) to automate data migration from disparate legacy systems into a centralized data warehouse.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/RasakYusuf/your-etl-project-repo" target="_blank" class="button project-button primary-button">
+                            <i class="fab fa-github"></i> GitHub
                         </a>
-                        <h4 class="text-lg font-semibold text-light-text mt-4 mb-2">SQL Solution Snippet:</h4>
-                        <pre class="sql-code-block"><code>
- SELECT country,StateProvince,Class, count(*) as TotalTransaction, sum(orderqty) TotalQty
- FROM PurchaseTrans
- GROUP BY ROLLUP  (Country,StateProvince,Class)
- ORDER BY country
-
- SELECT country,StateProvince,Class, count(*) as TotalTransaction, sum(orderqty) TotalQty
- FROM PurchaseTrans
- GROUP BY CUBE  (Country,StateProvince,Class)
- ORDER BY country
-
- SELECT country,StateProvince,Class, count(*) as TotalTransaction, sum(orderqty) TotalQty from PurchaseTrans
- GROUP BY GROUPING SETS (Country,StateProvince,Class)
- ORDER BY country
-
- CREATE DATABASE [K2A Fleets]
- USE [K2A Fleets]
- CREATE TABLE Float_Category
- (
-  FloatCategoryID INT IDENTITY(1,1),
-  FloatRate FLOAT,
-  FloatExceedQty FLOAT,
-  FloatExceedRate FLOAT
-  CONSTRAINT Float_Category_pk PRIMARY KEY (FloatCategoryID)
-)
-
- INSERT INTO Float_Category(FloatRate,FloatExceedQty,FloatExceedRate)
- VALUES(0.4,15,0.7),
-       (0.1,15,0.6),
-	    (0.2,50,0.75),
-		(0.24,68,0.9),
-		(0.12,100,1.8)
-
-CREATE TABLE Equipment
-(
- EquipmentID INT,
- EquipmentName VARCHAR(255),
- UnitPrice DECIMAL(12,2),
- DiscountPercent FLOAT,
- FloatCategoryID INT
- CONSTRAINT Equipment_pk PRIMARY KEY(EquipmentID)
- CONSTRAINT Float_Category_fk FOREIGN KEY (FloatCategoryID) REFERENCES Float_Category (FloatCategoryID)
-)
-
-Create Table Equipment
-(
- EquipmentID int identity (1,1) primary key,
- EquipmentName varchar(255),
- UnitPrice decimal(12,2),
- DiscountPercent float,
- FloatCategoryID int foreign key references Float_Category(FloatCategoryID)
-)
-
-select * from Equipment
-insert into Equipment(EquipmentName,UnitPrice,DiscountPercent,FloatCategoryID)
-Values('Cup -Lock System of Shuttering – 3.2 M high',122.50,0.015,1),
-      ( 'Steel Props – 4.2 M High',100,0.02,1),
-	  ( 'Steel shuttering plates – 3 ft x 2 ft',1000.50,0.05,1),
-	  ( 'Steel section Girders – 8ft to 12 ft' ,1700.00,0.01,1),
-	  ( 'Steel pipes for scaffolding',15000.00,0.08,1),
-	  ( 'Telescopic Girders',200,0.4,1),
-	  ( 'Tower Crane',233,0.14,1),
-	  ( 'Tractor mounted Crane' ,105,0.4,1),
-	  ( 'Concrete batching plant' ,1325.70,0.015,1),
-	  ( 'Mobile batching plant' ,99.87,0.011,1),
-	  ( 'Concrete Pump (Greaves – 40 cum/hr)',1500.50,0.095,1),
-	  ( 'Tremix machine set with trowel & floater',700.69,0.15,1),
-	  ( 'Concrete mixers',120,0.15,1),
-	  ( 'D.G. Set – 82.KVA' ,12.50,0.15,1),
-	  ( 'Vibrators (Electrical)',200.99,0.001,1),
-	  ( 'Vibrators (Petrol)',4100.90,0.03,1),
-	  ( 'Stone cutting machine (Platform type)',1200.56,0.09,1),
-	  ( 'Stone cutting machine (hand type)' ,1780,0.0094,1),
-	  ( 'Groove cutting machine',122.50,0.5,1),
-	  ( 'Builder’sÂ Hoist with winch',122.50,0.5,1),
-	  ( 'Bar Bending & cutting machine' ,122.50,0.5,1),
-	  ( 'Truck' ,122.50,0.5,1),
-	  ( 'Air Compressor',122.50,0.5,1),
-	  ( 'Road Roller',122.50,0.5,1),
-	  ( 'Vibro-Roller',122.50,0.5,1),
-	  ( 'Tipper – Tata' ,122.50,0.5,1),
-	  ( 'Excavator – ACE' ,122.50,0.5,1),
-	  ( 'Tractor with trolly – 40 HP',122.50,0.5,1),
-	  ( 'Water pump',122.50,0.5,1),
-	  ( 'Cutter Hitachi – Model CM 45',122.50,0.5,1),
-	  ( 'Welding Set – Aircooled',122.50,0.5,1),
-	  ( 'Drilling Machine Bosch – GSB – 16' ,122.50,0.5,1),
-	  ( 'Mud pump – GEC – 1 HP 2 HP',122.50,0.5,1),
-	  ( 'Floor Grinding machine – 2 HP' ,122.50,0.5,1),
-	  ( 'Earth Compactor – 7.5 HP motor',122.50,0.5,1),
-	  ( 'CGI Sheets – 10′, 12′ Long' ,122.50,0.5,1)
-
-Create table Customer
-     (
-	  CustomerID int identity (1,1),
-      CustomerName varchar(255),
-	  Category varchar(255),
-	  PrimaryContact varchar(255),
-	  ReferenceNo varchar(255),
-	  PaymentDays int,
-	  PostalCode int
-	  constraint customer_pk primary key (customerID)
-     )
-
-insert into Customer(CustomerName,Category,PrimaryContact,ReferenceNo,PaymentDays,PostalCode)
-values('A Datum Corporation','Novelty Goods Supplier','Reio Kabin','AA20384',14,46077),
-       ('Woodgrove Bank','Financial Services Supplier','Hubert Helms','28034202',7,94101),
-	   ('Consolidated Messenger','Courier','Kerstin Parn','209340283',30,94101),
-	   ('Litware Inc.','Packaging Supplier','Elias Myllari','BC0280982',30,95245),
-	   ('Humongous Insurance','Insurance Services Supplier','Madelaine Cartier','82420938',14,37770),
-	   ('Graphic Design Institute','Novelty Goods Supplier','Penny Buck','8803922',14,64847),
-	   ('Fabrikam Inc.','Clothing Supplier','Bill Lawson','293092',30,40351),
-	   ('The Phone Company','Novelty Goods Supplier','Hai Dam','237408032',30,56732),
-	   ('Trey Research','Marketing Services Supplier','Donald Jones','82304822',7,57543),
-	   ('Lucerne Publishing','Novelty Goods Supplier','Prem Prabhu','JQ082304802',30,37659),
-	   ('Contoso Ltd.','Novelty Goods Supplier','Hanna Mihhailov','B2084020',7,98253),
-	   ('Nod Publishers','Novelty Goods Supplier','Marcos Costa','GL08029802',7,27906),
-	   ('Northwind Electric Cars','Toy Supplier','Eliza Soderberg','ML0300202',30,7860),
-	   ('A Datum Corporation','Novelty Goods Supplier','Reio Kabin','AA20384',14,46077),
-	   ('Contoso Ltd.','Novelty Goods Supplier','Hanna Mihhailov','B2084020',7,98253),
-	   ('Consolidated Messenger','Courier','Kerstin Parn','209340283',30,94101),
-	   ('Fabrikam Inc.','Clothing Supplier','Bill Lawson','293092',30,40351),
-	   ('Graphic Design Institute','Novelty Goods Supplier','Penny Buck','8803922',14,64847),
-	   ('Humongous Insurance','Insurance Services Supplier','Madelaine Cartier','82420938',14,37770),
-	   ('Litware Inc.','Packaging Supplier','Elias Myllari','BC0280982',30,95245),
-	   ('Lucerne Publishing','Novelty Goods Supplier','Prem Prabhu','JQ082304802',30,37659),
-	   ('Nod Publishers','Novelty Goods Supplier','Marcos Costa','GL08029802',7,27906),
-	   ('Northwind Electric Cars','Toy Supplier','Eliza Soderberg','ML0300202',30,7860),
-	   ('Trey Research','Marketing Services Supplier','Donald Jones','82304822',7,57543),
-	   ('The Phone Company','Novelty Goods Supplier','Hai Dam','237408032',30,56732),
-	   ('Woodgrove Bank','Financial Services Supplier','Hubert Helms','28034202',7,94101),
-	   ('Consolidated Messenger','Courier Services Supplier','Kerstin Parn','209340283',30,94101)
-
-select * from Customer
-
-Declare @StartDate Date='2015-01-01'
-Declare @EndDate Date='2019-05-31'
-Declare @TransDate date
-Declare @MaxCounter int=1000000
-Declare @StartCounter int=1
-Declare @CustomerID int
-Declare @EquipmentID int
-Declare @Quantity float
-Declare @GrossAmount decimal(12,2)
-Declare @DiscountAmount decimal(12,2)
-Declare @FloatRateAmount decimal(12,2)
-Declare @FloatExceededAmount decimal(12,2)
-Declare @PostalVariationAmount decimal(12,2)
-/*create table Equipment_Transaction
-    (
-	  TransID int identity(1,1),
-	  TransDate datetime,
-	  CustomerID int,
-	  EquipmentID int,
-	  Quantity float,
-	  GrossAmount decimal(12,2),
-	  DiscountAmount decimal(12,2),
-	  FloatRateAmount decimal(12,2),
-	  FloatExceededAmount decimal(12,2),
-	  PostalVariationAmount decimal(12,2)
-	  Constraint Equipment_Transaction_pk primary key(TransID),
-	  constraint CustomerID_fk foreign key (customerID) references Customer(CustomerID),
-	  Constraint EquipmentID_fk foreign key (EquipmentID) references Equipment(EquipmentID)
-)*/
-While @StartCounter<=@MaxCounter
-Begin
-  Select @TransDate= (select (Dateadd(day,convert(int,Rand()*(  datediff(day,@StartDate,@EndDate)))+1,@StartDate) ))
-  Select @CustomerID=(select convert(int,rand()*(select max(CustomerID) from Customer)) + (select min(customerID) from Customer))
-  Select @EquipmentID=(select convert(int, rand()*(select max(EquipmentID) from Equipment)) + (select min(EquipmentID) from Equipment))
-  select @Quantity=round((select convert(float,rand()*1000)),2)
-  select @GrossAmount=(SELECT UnitPrice FROM Equipment WHERE EquipmentID = @EquipmentId)*@Quantity
-  select @DiscountAmount=(select DiscountPercent from Equipment where EquipmentID = @EquipmentId)*@Quantity
-  select @FloatRateAmount=case
-                              when @Quantity >100 and @Quantity<150 then @Quantity*FloatRate
-							  Else '0'
-							  End
-							  from Float_Category FC
-							  inner join Equipment E on fc.FloatCategoryID=E.FloatCategoryID
-
-  select @FloatExceededAmount=case
-                              when @Quantity>150 then FloatExceedRate*@Quantity
-							  Else '0'
-							  End
-							  from Float_Category FC
-							  inner join Equipment E on fc.FloatCategoryID=E.FloatCategoryID
-
-  select @PostalVariationAmount= case
-                                          when PostalCode>=7000 and PostalCode<=50000 then @Quantity*0.002
-										  when PostalCode>=50001 and PostalCode<=70000 then @Quantity*0.050
-										  when PostalCode>=70001 and PostalCode<=90000 then @Quantity*0.062
-										  Else @Quantity*0.0078
-										  End
-										  from Customer
-
-insert into Equipment_Transaction(TransDate,CustomerID,EquipmentID,Quantity,GrossAmount,DiscountAmount,FloatRateAmount,FloatExceededAmount,PostalVariationAmount)
-select @TransDate,@CustomerID,@EquipmentID,@Quantity,@GrossAmount,@DiscountAmount,@FloatRateAmount,@FloatExceededAmount,@PostalVariationAmount
-
-  select @StartCounter=@StartCounter+1
-End
-
-
-
-Truncate table equipment_transaction
-select * from equipment_transaction
-
-create function dbo.TopCustomer (@Year int, @TopN int)
-RETURNS TABLE
-AS
-RETURN
-  (
-   SELECT Top (@TopN)c.CustomerID,c.CustomerName,sum(GrossAmount) as PurchaseAmount from Equipment_Transaction E
-   inner join Customer c on E.CustomerID=c.CustomerID
-   where year(TransDate)=@Year
-   Group by c.CustomerID,c.CustomerName
-   order by sum(GrossAmount) desc
-
-  )
-
-
-   select * from dbo.TopCustomer (2019,10)
-
-  select EquipmentName,sum(GrossAmount)as PurchaseAmount,year(TransDate) TransYear  from Equipment_Transaction ET
-  inner join Equipment E on E.EquipmentID=ET.EquipmentID
-  where EquipmentName in (' Cup -Lock System of Shuttering – 3.2 M high','Bar Bending & cutting machine')
-  group by EquipmentName,year(TransDate)
-
-  select EquipmentName,sum(unitprice*Quantity) as Total,year(TransDate) TransYear  from Equipment_Transaction ET
-  inner join Equipment E on E.EquipmentID=ET.EquipmentID
-  where equipmentName in (' Cup -Lock System of Shuttering – 3.2 M high','Bar Bending & cutting machine')
-  group by EquipmentName,year(TransDate)
-
- /* Dataset and Summary data are needed for testing S & M Software
- */
-use [K2A Fleets]
-
-SELECT e.EquipmentName as Equipment,
-     format( SUM(case when year(t.Transdate) = 2015 then grossamount end),'C') as '2015',
-	 format( SUM(case when year(t.Transdate) = 2016 then grossamount end),'C') as '2016',
-	 format( SUM(case when year(t.Transdate) = 2017 then grossamount end),'C') as '2017',
-	 format( SUM(case when year(t.Transdate) = 2018 then grossamount end),'C') as '2018',
-	 format( SUM(case when year(t.Transdate) = 2019 then grossamount end),'C') as '2019'
-    FROM
-       Equipment_Transaction t
-    INNER JOIN
-        Equipment e ON t.EquipmentID = e.EquipmentID
-Group BY EquipmentName;
-
-
----2nd Method
-SELECT EquipmentName,
-       FORMAT([2015],'C') AS [2015],
-       FORMAT([2016],'C') AS [2016],
-       FORMAT([2017],'C') AS [2017],
-       FORMAT([2018],'C') AS [2018],
-       FORMAT([2019],'C') AS [2019]
-FROM
-    (SELECT e.EquipmentName,
-            YEAR(t.Transdate) AS TransYear,
-            t.GrossAmount
-     FROM Equipment_Transaction T
-     INNER JOIN Equipment E ON T.EquipmentID = E.EquipmentID) D
-PIVOT
-    (SUM(GrossAmount) FOR TransYear IN ([2015],[2016],[2017],[2018],[2019])) G;
-```
-</pre>
-                        <a href="portfolio-assets/k2a-fleets.sql" download="k2a-fleets.sql" class="inline-flex items-center mt-4 px-6 py-2.5 border-2 border-accent-color text-accent-color font-semibold rounded-lg hover:bg-accent-color hover:text-primary-bg transition duration-300 shadow-md">
-                            Download SQL File
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                        <a href="#" target="_blank" class="button project-button secondary-button">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
                         </a>
                     </div>
                 </div>
-
-                <!-- Project Card 3: Falanza Agro-Allied: Poultry Performance Analysis Dashboard -->
-                <div class="group project-card bg-primary-bg rounded-lg shadow-lg overflow-hidden border border-secondary-text transform hover:-translate-y-2 transition-transform duration-300">
-                    <div class="relative w-full h-56 overflow-hidden">
-                        <!-- Removed img tag as requested -->
-                        <div class="project-card-img-overlay"></div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-semibold font-montserrat text-light-text mb-2">Falanza Agro-Allied: Poultry Performance Analysis Report</h3>
-                        <p class="secondary-text text-base mb-4">
-                            Developed a comprehensive Power BI report addressing key concerns for Falanza Agro-Allied,
-                            including inconsistent egg production, daily mortality, and the rising costs vs. revenues.
-                            This detailed report provides in-depth analysis of egg collection, mortality rates, feeding costs,
-                            monthly revenue, and includes trend analysis and forecasting for informed bird disposition.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-accent-color bg-opacity-20 text-accent-color text-sm font-medium px-3 py-1 rounded-full">Power BI</span>
-                            <span class="bg-accent-color bg-opacity-20 text-accent-color text-sm font-medium px-3 py-1 rounded-full">Data Analysis</span>
-                            <span class="bg-accent-color bg-opacity-20 text-accent-color text-sm font-medium px-3 py-1 rounded-full">Performance Metrics</span>
-                            <span class="bg-accent-color bg-opacity-20 text-accent-color text-sm font-medium px-3 py-1 rounded-full">Trend Analysis</span>
-                            <span class="bg-accent-color bg-opacity-20 text-accent-color text-sm font-medium px-3 py-1 rounded-full">Forecasting</span>
-                        </div>
-                        <a href="portfolio-assets/falanza-report.pdf" download="falanza-report.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-2.5 border-2 border-accent-color text-accent-color font-semibold rounded-lg hover:bg-accent-color hover:text-primary-bg transition duration-300 shadow-md">
-                            View Report (PDF)
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+                <div class="project-item">
+                    <img src="https://placehold.co/400x250/FEE2E2/EF4444?text=Reporting+Solution" alt="Custom Reporting Solution Thumbnail">
+                    <h3>Financial Reporting Automation</h3>
+                    <p>Developed a custom reporting solution leveraging Python and SQL to automate the generation of complex financial reports, significantly reducing manual effort and improving accuracy.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/RasakYusuf/your-reporting-project-repo" target="_blank" class="button project-button primary-button">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                        <a href="#" target="_blank" class="button project-button secondary-button">
+                            <i class="fas fa-external-link-alt"></i> Live Demo
                         </a>
                     </div>
                 </div>
-
-                <!-- Project Card 4: Tesca Project -->
-                <div class="group project-card bg-primary-bg rounded-lg shadow-lg overflow-hidden border border-secondary-text transform hover:-translate-y-2 transition-transform duration-300">
-                    <div class="relative w-full h-56 overflow-hidden">
-                        <!-- Removed img tag as requested -->
-                        <div class="project-card-img-overlay"></div>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-semibold font-montserrat text-light-text mb-2">Tesca Grocery Chain Analysis</h3>
-                        <p class="secondary-text text-base mb-4">
-                            Developed an Enterprise Data Warehousing solution for Tesca Grocery chain, consolidating sales, purchase, overtime, absent, and misconduct data. Designed Data Mart Cubes using SQL Server Analysis Services (Multidimensional and Tabular Models) and created comprehensive Power BI and Tableau visualizations to provide actionable insights into product movement, sales impact, vendor efficiency, employee trends, and more.
-                        </p>
-                        <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="bg-accent-color bg-opacity-20 text-accent-color text-sm font-medium px-3 py-1 rounded-full">Data Warehousing</span>
-                            <span class="bg-accent-color bg-opacity-20 text-accent-color text-sm font-medium px-3 py-1 rounded-full">SSAS</span>
-                            <span class="bg-accent-color bg-opacity-20 text-accent-color text-sm font-medium px-3 py-1 rounded-full">Power BI</span>
-                            <span class="bg-accent-color bg-opacity-20 text-accent-color text-sm font-medium px-3 py-1 rounded-full">Tableau</span>
-                            <span class="bg-accent-color bg-opacity-20 text-accent-color text-sm font-medium px-3 py-1 rounded-full">ETL</span>
-                        </div>
-                        <a href="portfolio-assets/Tesca Power BI.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center px-6 py-2.5 border-2 border-accent-color text-accent-color font-semibold rounded-lg hover:bg-accent-color hover:text-primary-bg transition duration-300 shadow-md">
-                            View Report (PDF)
-                            <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                        </a>
-                    </div>
-                </div>
-
+                <!-- Add more project items as needed, following the same structure -->
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="w-full max-w-6xl bg-card-bg p-8 md:p-12 rounded-lg shadow-xl mb-20" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="600">
-            <h2 class="text-4xl font-bold font-poppins text-accent-color mb-8 text-center">Get in Touch</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Contact Info -->
-                <div class="flex flex-col items-center md:items-start secondary-text text-lg">
-                    <p class="mb-4"><strong class="text-light-text">Name:</strong> Rasak Yusuf</p>
-                    <p class="mb-4"><strong class="text-light-text">Title:</strong> Business Intelligence Developer</p>
-                    <p class="mb-4"><strong class="text-light-text">Phone:</strong> +1 (368) 299-4490</p>
-                    <p class="mb-4"><strong class="text-light-text">Email:</strong> <a href="mailto:rasakyusuf@gmail.com" class="text-accent-color hover:underline">rasakyusuf@gmail.com</a></p>
-                    <p class="mb-4"><strong class="text-light-text">Location:</strong> Calgary, Canada</p>
-                    <div class="flex space-x-6 mt-4">
-                        <a href="[https://linkedin.com/in/rasak-yusuf](https://linkedin.com/in/rasak-yusuf)" target="_blank" rel="noopener noreferrer" class="text-secondary-text hover:text-accent-color transition duration-300">
-                            <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                        </a>
-                        <a href="[https://github.com/rasakyusuf](https://github.com/rasakyusuf)" target="_blank" rel="noopener noreferrer" class="text-secondary-text hover:text-accent-color transition duration-300">
-                            <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.835 2.809 1.305 3.493.998.108-.776.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1-.322 3.296 1.23.969-.268 1.98-.403 2.992-.407 1.011.004 2.023.139 2.993.407 2.295-1.552 3.295-1.23 3.295-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 22.105 24 17.597 24 12 24 5.373 18.627 0 12 0z"/></svg>
-                        </a>
-                        <a href="mailto:rasakyusuf@gmail.com" class="text-secondary-text hover:text-accent-color transition duration-300">
-                            <svg xmlns="[http://www.w3.org/2000/svg](http://www.w3.org/2000/svg)" width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12.713l-11.985-9.713h23.97l-11.985 9.713zm0 2.574l-12-9.721v14.434h24v-14.434l-12 9.721z"/></svg>
-                        </a>
-                    </div>
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section light-bg">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <p class="contact-intro">I'm always excited to discuss new projects, collaborations, or opportunities. Feel free to connect with me!</p>
+            <div class="contact-info-grid">
+                <div class="contact-item">
+                    <i class="fas fa-envelope fa-3x"></i>
+                    <h3>Email</h3>
+                    <p><a href="mailto:rasakyusuf@gmail.com">rasakyusuf@gmail.com</a></p>
                 </div>
-
-                <!-- Contact Form -->
-                <div class="bg-primary-bg p-8 rounded-lg shadow-lg border border-secondary-text">
-                    <h3 class="text-2xl font-semibold font-montserrat text-light-text mb-4 text-center">Send Me a Message</h3>
-                    <form id="contactForm" action="[https://formspree.io/f/mzzgkkep](https://formspree.io/f/mzzgkkep)" method="POST">
-                        <div class="mb-5">
-                            <label for="name" class="block text-light-text text-base font-bold mb-2">Name:</label>
-                            <input type="text" id="name" name="name" class="shadow-sm appearance-none border border-secondary-text rounded-lg w-full py-3 px-4 bg-primary-bg text-light-text leading-tight focus:outline-none focus:ring-2 focus:ring-accent-color focus:border-transparent transition duration-200" placeholder="Your Full Name" required>
-                        </div>
-                        <div class="mb-5">
-                            <label for="email" class="block text-light-text text-base font-bold mb-2">Email:</label>
-                            <input type="email" id="email" name="_replyto" class="shadow-sm appearance-none border border-secondary-text rounded-lg w-full py-3 px-4 bg-primary-bg text-light-text leading-tight focus:outline-none focus:ring-2 focus:ring-accent-color focus:border-transparent transition duration-200" placeholder="your.email@example.com" required>
-                        </div>
-                        <div class="mb-5">
-                            <label for="subject" class="block text-light-text text-base font-bold mb-2">Subject:</label>
-                            <input type="text" id="subject" name="_subject" class="shadow-sm appearance-none border border-secondary-text rounded-lg w-full py-3 px-4 bg-primary-bg text-light-text leading-tight focus:outline-none focus:ring-2 focus:ring-accent-color focus:border-transparent transition duration-200" placeholder="Subject of your message" required>
-                        </div>
-                        <div class="mb-6">
-                            <label for="message" class="block text-light-text text-base font-bold mb-2">Message:</label>
-                            <textarea id="message" name="message" rows="6" class="shadow-sm appearance-none border border-secondary-text rounded-lg w-full py-3 px-4 bg-primary-bg text-light-text leading-tight focus:outline-none focus:ring-2 focus:ring-accent-color focus:border-transparent transition duration-200" placeholder="Your message here..." required></textarea>
-                        </div>
-                        <div class="flex items-center justify-center space-x-4">
-                            <button type="submit" class="px-8 py-3 bg-accent-color text-primary-bg font-bold text-lg rounded-xl shadow-lg hover:bg-opacity-80 transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-color focus:ring-offset-2">
-                                Send Message
-                            </button>
-                            <button type="button" onclick="clearForm()" class="px-8 py-3 bg-secondary-text text-primary-bg font-bold text-lg rounded-xl shadow-lg hover:bg-opacity-80 transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-secondary-text focus:ring-offset-2">
-                                Clear All
-                            </button>
-                        </div>
-                    </form>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin fa-3x"></i>
+                    <h3>LinkedIn</h3>
+                    <p><a href="https://linkedin.com/in/rasak-yusuf" target="_blank">linkedin.com/in/rasak-yusuf</a></p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone fa-3x"></i>
+                    <h3>Phone</h3>
+                    <p>[Your Phone Number (Optional)]</p>
                 </div>
             </div>
-        </section>
+            <!-- Optional: A simple contact form (requires backend or a service like Formspree) -->
+            <!--
+            <form class="contact-form" action="https://formspree.io/f/yourformid" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="_replyto" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" rows="6" required></textarea>
+                <button type="submit" class="button primary-button">Send Message</button>
+            </form>
+            -->
+        </div>
+    </section>
 
-        <!-- Footer -->
-        <footer class="w-full max-w-6xl text-center secondary-text text-sm mt-12 py-6 border-t border-secondary-text border-opacity-30">
-            &copy; 2025 Rasak Yusuf. All rights reserved.
-        </footer>
-    </div>
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Rasak Yusuf. All rights reserved.</p>
+            <div class="footer-social-links">
+                <a href="https://linkedin.com/in/rasak-yusuf" target="_blank" aria-label="LinkedIn Profile"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:rasakyusuf@gmail.com" aria-label="Send an Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://github.com/RasakYusuf/Rasak" target="_blank" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
 
+    <!-- JavaScript for smooth scrolling -->
     <script>
-        // Initialize AOS library
-        AOS.init({
-            once: true, /* Whether animation should happen only once - while scrolling down */
-        });
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevent default anchor click behavior
 
-        // Function to clear the contact form
-        function clearForm() {
-            document.getElementById('name').value = '';
-            document.getElementById('email').value = '';
-            document.getElementById('subject').value = '';
-            document.getElementById('message').value = '';
-        }
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth' // Smooth scroll to the target section
+                    });
+                }
+            });
+        });
     </script>
 </body>
 </html>
