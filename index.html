@@ -365,6 +365,7 @@
             justify-content: flex-start;
             gap: 0.75rem; /* Tailwind's gap-3 */
             padding: 0 1.5rem 1.5rem; /* Tailwind's px-6 pb-6 */
+            flex-wrap: wrap; /* Allow buttons to wrap to next line on smaller screens */
         }
 
         .project-button {
@@ -386,6 +387,16 @@
 
         .project-button.primary-button:hover {
             background-color: #2563eb;
+        }
+
+        .project-button.secondary-button {
+            background-color: #ffffff;
+            color: #3b82f6;
+            border: 2px solid #3b82f6;
+        }
+
+        .project-button.secondary-button:hover {
+            background-color: #eff6ff;
         }
 
         .project-button i {
@@ -570,7 +581,7 @@
                 <p>My journey in technology began with a fascination for data-driven decision-making and a strong desire to help businesses grow. I am constantly learning and adapting to new technologies in the BI landscape to deliver high-quality and efficient results.</p>
                 <p>Outside of work, I enjoy exploring new data visualization techniques, reading, and spending time with family.</p>
                 <!-- Download Resume Button -->
-                <a id="downloadResumeBtn" class="button primary-button download-resume-button">Download Resume</a>
+                <a href="https://github.com/RasakYusuf/Rasak/blob/main/portfolio-assets/Razak_Yusuf_Resume.pdf?raw=true" target="_blank" class="button primary-button download-resume-button">View Resume</a>
             </div>
         </div>
     </section>
@@ -658,47 +669,80 @@
         <div class="container">
             <h2>My Projects</h2>
             <div class="projects-grid">
+                <!-- Project: K2A Fleets and Machineries Inc. - SQL Server Case Study -->
                 <div class="project-item">
-                    <img src="https://placehold.co/400x250/E0F2FE/3B82F6?text=BI+Dashboard" alt="BI Dashboard Project Thumbnail">
-                    <h3>Interactive Sales Dashboard</h3>
-                    <p>Designed and developed an interactive Power BI dashboard to visualize sales performance, enabling key stakeholders to monitor trends and identify growth opportunities.</p>
+                    <img src="https://placehold.co/400x250/60A5FA/FFFFFF?text=SQL+Case+Study" alt="K2A Fleets and Machineries Inc. - SQL Server Case Study Thumbnail">
+                    <h3>K2A Fleets and Machineries Inc. - SQL Server Case Study</h3>
+                    <p>A SQL-based simulation project developed to test an S&M Software for a heavy equipment supplier. Implemented using normalized relational tables, advanced SQL features (e.g., GROUPING SETS, CUBE, ROLLUP), and a dynamic dataset of 1 million transactions across 5 years. This project includes database modeling, data generation, analytics, and business rule implementation using SQL Server (T-SQL).</p>
                     <div class="project-links">
-                        <a href="https://github.com/RasakYusuf/your-sales-dashboard-repo" target="_blank" class="button project-button primary-button">
-                            <i class="fab fa-github"></i> GitHub
+                        <a href="https://github.com/RasakYusuf/your-k2a-project-repo" target="_blank" class="button project-button primary-button">
+                            <i class="fab fa-github"></i> GitHub Repo
                         </a>
-                        <!-- Replace with actual live demo link if available -->
-                        <a href="#" target="_blank" class="button project-button secondary-button">
-                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        <a href="https://github.com/RasakYusuf/Rasak/blob/main/portfolio-assets/01_create_database_and_tables.sql?raw=true" target="_blank" class="button project-button secondary-button">
+                            <i class="fas fa-code"></i> Create DB & Tables
+                        </a>
+                        <a href="https://github.com/RasakYusuf/Rasak/blob/main/portfolio-assets/02_insert_data.sql?raw=true" target="_blank" class="button project-button secondary-button">
+                            <i class="fas fa-code"></i> Insert Data
+                        </a>
+                        <a href="https://github.com/RasakYusuf/Rasak/blob/main/portfolio-assets/03_generate_transactions.sql?raw=true" target="_blank" class="button project-button secondary-button">
+                            <i class="fas fa-code"></i> Generate Transactions
+                        </a>
+                        <a href="https://github.com/RasakYusuf/Rasak/blob/main/portfolio-assets/04_analysis_queries.sql?raw=true" target="_blank" class="button project-button secondary-button">
+                            <i class="fas fa-code"></i> Analysis Queries
+                        </a>
+                        <a href="https://github.com/RasakYusuf/Rasak/blob/main/portfolio-assets/05_top_customers_function.sql?raw=true" target="_blank" class="button project-button secondary-button">
+                            <i class="fas fa-code"></i> Top Customers Function
                         </a>
                     </div>
                 </div>
+                <!-- Project: Tesca Grocery Chain Project -->
                 <div class="project-item">
-                    <img src="https://placehold.co/400x250/FFFBEB/D97706?text=ETL+Pipeline" alt="ETL Pipeline Project Thumbnail">
-                    <h3>Automated Data Migration System</h3>
-                    <p>Engineered a robust ETL pipeline using SQL Server Integration Services (SSIS) to automate data migration from disparate legacy systems into a centralized data warehouse.</p>
+                    <img src="https://placehold.co/400x250/E0F2FE/3B82F6?text=Tesca+BI+Project" alt="Tesca Grocery Chain Project Thumbnail">
+                    <h3>Tesca Grocery Chain Project</h3>
+                    <p>Designed and implemented an Enterprise Data Warehouse for Tesca Grocery Chain, encompassing ETL pipelines (SSIS) for data automation, data de-duplication, and robust data monitoring (SSMS). Developed both Multidimensional and Tabular models using SQL Server Analysis Services (SSAS) to address complex analytic requirements. Created comprehensive Power BI visualizations to provide actionable insights into sales, promotions, product mix, vendor efficiency, and HR trends (employee misconduct and absence), enabling informed business decisions.</p>
                     <div class="project-links">
-                        <a href="https://github.com/RasakYusuf/your-etl-project-repo" target="_blank" class="button project-button primary-button">
-                            <i class="fab fa-github"></i> GitHub
+                        <a href="https://github.com/RasakYusuf/your-tesca-project-repo" target="_blank" class="button project-button primary-button">
+                            <i class="fab fa-github"></i> GitHub Repo
                         </a>
-                        <a href="#" target="_blank" class="button project-button secondary-button">
-                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        <a href="https://github.com/RasakYusuf/Rasak/blob/main/portfolio-assets/Tesca%20Power%20BI.pdf?raw=true" target="_blank" class="button project-button secondary-button">
+                            <i class="fas fa-external-link-alt"></i> Power BI Viz
+                        </a>
+                        <a href="https://github.com/RasakYusuf/Rasak/blob/main/portfolio-assets/Tesca%20ETL%20Pipeline.png?raw=true" target="_blank" class="button project-button secondary-button">
+                            <i class="fas fa-eye"></i> ETL Pipeline View
+                        </a>
+                        <a href="https://github.com/RasakYusuf/Rasak/blob/main/portfolio-assets/Tesca%20ssms%20Automation.png?raw=true" target="_blank" class="button project-button secondary-button">
+                            <i class="fas fa-eye"></i> SSMS Automation View
                         </a>
                     </div>
                 </div>
+                <!-- Project: Falanza Agro-Allied Limited -->
                 <div class="project-item">
-                    <img src="https://placehold.co/400x250/FEE2E2/EF4444?text=Reporting+Solution" alt="Custom Reporting Solution Thumbnail">
-                    <h3>Financial Reporting Automation</h3>
-                    <p>Developed a custom reporting solution leveraging Python and SQL to automate the generation of complex financial reports, significantly reducing manual effort and improving accuracy.</p>
+                    <img src="https://placehold.co/400x250/F0F4F8/60A5FA?text=Falanza+Agro+Project" alt="Falanza Agro-Allied Limited Project Thumbnail">
+                    <h3>Falanza Agro-Allied Limited Project</h3>
+                    <p>Addressed key concerns for Falanza Agro-Allied Limited, including inconsistent egg production, daily mortality, and rising costs, by developing comprehensive Power BI solutions. Replicated existing data sheets and performed in-depth monthly revenue analysis (egg sales, mortality, feeding costs). Conducted trend analysis and forecasting for egg production to advise on bird disposition, analyzed mortality rates based on events, and provided weekly, monthly, and yearly feeding and costing analysis. This enabled data-driven decisions for improved farm management and profitability.</p>
                     <div class="project-links">
-                        <a href="https://github.com/RasakYusuf/your-reporting-project-repo" target="_blank" class="button project-button primary-button">
-                            <i class="fab fa-github"></i> GitHub
+                        <a href="https://github.com/RasakYusuf/your-falanza-project-repo" target="_blank" class="button project-button primary-button">
+                            <i class="fab fa-github"></i> GitHub Repo
                         </a>
-                        <a href="#" target="_blank" class="button project-button secondary-button">
-                            <i class="fas fa-external-link-alt"></i> Live Demo
+                        <a href="https://github.com/RasakYusuf/Rasak/blob/main/portfolio-assets/falanza-report.pdf?raw=true" target="_blank" class="button project-button secondary-button">
+                            <i class="fas fa-external-link-alt"></i> Power BI Report
                         </a>
                     </div>
                 </div>
-                <!-- Add more project items as needed, following the same structure -->
+                <!-- New Project: John Camry Income and Expenditure Analysis – Power BI Dashboard -->
+                <div class="project-item">
+                    <img src="https://placehold.co/400x250/D1E7DD/28A745?text=John+Camry+Dashboard" alt="John Camry Income and Expenditure Analysis Dashboard Thumbnail">
+                    <h3>John Camry Income and Expenditure Analysis – Power BI Dashboard</h3>
+                    <p>Designed a Power BI dashboard for a cab owner to monitor and analyze income and expenses. Integrated indicators, trendlines, and forecasting to support cost control and profit visibility. Dashboard is optimized for mobile, tablet, and desktop viewing while retaining Excel-based data entry.</p>
+                    <div class="project-links">
+                        <a href="https://github.com/RasakYusuf/your-john-camry-project-repo" target="_blank" class="button project-button primary-button">
+                            <i class="fab fa-github"></i> GitHub Repo
+                        </a>
+                        <a href="https://github.com/RasakYusuf/Rasak/blob/main/portfolio-assets/john-camry-income-expenditure.pdf?raw=true" target="_blank" class="button project-button secondary-button">
+                            <i class="fas fa-external-link-alt"></i> View Report (PDF)
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -747,9 +791,9 @@
                 <a href="https://github.com/RasakYusuf/Rasak" target="_blank" aria-label="GitHub Profile"><i class="fab fa-github"></i></a>
             </div>
         </div>
-    </section>
+    </footer >
 
-    <!-- JavaScript for smooth scrolling and resume download -->
+    <!-- JavaScript for smooth scrolling -->
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -764,19 +808,6 @@
                     });
                 }
             });
-        });
-
-        // JavaScript for direct resume download
-        document.getElementById('downloadResumeBtn').addEventListener('click', function(e) {
-            e.preventDefault(); // Prevent default link behavior
-
-            const resumeUrl = "https://github.com/RasakYusuf/Rasak/raw/main/portfolio-assets/Razak_Yusuf_Resume.pdf";
-            const link = document.createElement('a');
-            link.href = resumeUrl;
-            link.download = 'Razak_Yusuf_Resume.pdf'; // Suggested filename for download
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
         });
     </script>
 </body>
